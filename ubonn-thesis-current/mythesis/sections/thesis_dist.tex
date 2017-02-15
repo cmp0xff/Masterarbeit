@@ -1,0 +1,270 @@
+%==============================================================================
+\chapter{Quantification of the Difference}
+\label{chap:quantifing}
+%==============================================================================
+
+Having shown explicitly the discrepancy between the pure and the thermal 
+descriptions as well as where it is most significant, the author will then
+quantify the difference. Related definitions of distances in quantum 
+mechanics are introduced in \cref{chap:distappd}.
+%In this chapter, it will be explained why the difference between the two cases 
+%is expected to be negatively correlated to the mass of the black hole, then 
+%the difference will be evaluated. 
+
+%------------------------------------------------------------------------------
+\section{The Canonical State} %Popescu--Winter Theorem
+\label{sec:arbitrary-canonical}
+%------------------------------------------------------------------------------
+
+It has been shown in \cite{Popescu2006} that a small subsystem in a large, 
+isolated system which is subject to a \emph{constraint}, is expected to be very 
+close to a \emph{canonical state} of it, which reduces to the usual 
+thermodynamic \emph{canonical ensemble} when the total system is under an 
+\emph{energy constraint}.
+
+Denoted by $U$, the large system has all its possible pure states in Hilbert 
+space $\mscrH_U$ which has a finite dimension $d_R = \dim \mscrH_U$. A global 
+constraint $R$ is also imposed, which restricts the physical Hilbert space of 
+$U$ to $\mscrH_R \subseteq \mscrH_U$. The \emph{equiprobable state} of $U$ is
+\begin{equation}
+\mscrE_R \coloneqq d_R^{-1} \Bbbone_R,
+\end{equation}
+where $\Bbbone_R$ is the identity operator on $\mscrH_R$. An energy constraint, 
+for instance, reads
+\begin{equation}
+\abr{H_U} = E_R,
+\label{eq:ene-constraint}
+\end{equation}
+so that a state $\Ket{\alpha}$ in $\mscrH_R^{\rbr{\text{E}}}$ satisfies
+\begin{equation}
+E_R = \Braket{\alpha | H_U | \alpha} = \sum_E \vbr{\Braket{E | \alpha}}^2 E,
+\end{equation}
+where $\Ket{E}$ is an energy eigenstate of $U$ with eigenvalue $E$.
+
+The subsystem in concern is named $S$, with \emph{all possible} states in the
+Hilbert space $\mscrH_S$; the rest of $U$ is called the \emph{environment} and 
+denoted by $E$, the pure states of which lie in $\mscrH_E$. One has
+\begin{equation}
+\mscrH_S \otimes \mscrH_E = \mscrH_U \supseteq \mscrH_R,\qquad
+H_U = H_S + H_E + H_\text{int},
+\end{equation}
+where $H_S$, $H_E$ and $H_\text{int}$ are the system, environment and 
+interaction Hamiltonian, respectively. 
+
+The \emph{canonical state} of $S$ is defined as
+\begin{equation}
+{\Omega}_S \coloneqq \tr_E {\mscrE}_R,
+\end{equation}
+where the trace is taken over all the degrees of freedom in the environment. 
+When the energy constraint \cref{eq:ene-constraint} is used, it can be shown 
+that $\Omega_S^{(E)}$ is a canonical ensemble\footnote{A derivation of 
+\cref{eq:canonical-state-def} in classical statistical physics can be found in 
+\cite[sec.~28]{Landau1980}.}
+\begin{equation}
+\Omega_S^{(E)} \propto \ee^{- H_S/T_\text{m}}
+= \sum_{E_S} \ee^{-E_S/T_\text{m}} \Ket{E_S}\Bra{E_S},
+\label{eq:canonical-state-def}
+\end{equation}
+where $T_\text{m}$ can be identified with a temperature, and $\Ket{E_S}$ is an
+eigenstate of the system with eigenvalue $E$. In this case it reduces to 
+the traditional thermodynamic statistical physics.
+
+%To state the theorems, one additional definition is needed: 
+The environment also has an \emph{effective} dimension
+\begin{equation}
+d_E^\text{eff} \coloneqq \rbr{\tr \Omega_E^2}^{-1} \geq d_R/d_S,
+\label{eq:def-effective-dim}
+\end{equation}
+where ${\Omega}_E = \tr_S {\mscrE}_R$. When no constraint is enforced, so that
+$\mscrH_S \otimes \mscrH_E \equiv \mscrH_U = \mscrH_R$, 
+\cref{eq:def-effective-dim} reduces to
+\begin{equation}
+d_E^\text{eff} = d_R/d_S = d_E.
+\end{equation}
+Detailed discussions about $d_E^\text{eff}$ can be found in \cite{Popescu2006}.
+
+Equipped with all the definitions above, one picks an arbitrary pure state 
+$\Ket{\phi}\in\mscrH_R$ and denote the \emph{reduced state} of $S$ by
+\begin{equation}
+\rfun{\rho_S}{\phi} = \tr_E \Ket{\phi}\Bra{\phi}
+\end{equation}
+Then a lemma states that the average \emph{trace distance}\footnote{See 
+\cref{sec:trace-dist}.} between $\rho_S$ and $\Omega_S$ is very small in terms 
+of the ratio between $d_S$ and $d_S/d_E^\text{eff}$, i.e.\
+\begin{equation}
+\abr{\rfun{T}{\rfun{\rho_S}{\phi}, {\Omega}_S}} \le \frac{1}{2}
+\sqrt{\frac{d_S}{d_E^\text{eff}}}.
+\end{equation}
+In a typical division where $d_S/d_E$ is small, this average distance will also 
+be tiny.
+
+More over, the main theorem asserts that those ${\rho}_S$'s which are close to 
+${\Omega}_S$ dominate; the probability of a large deviation is exponentially 
+small with respect to the deviation. For an arbitrary $\epsilon > 0$, the 
+theorem states that
+\begin{equation}
+\frac{\sfun{V}{\cbr{\Ket{\phi} \in \mscrH_R |
+\rfun{T}{\rfun{\rho_S}{\phi}, \Omega_S} \geq \eta}}}
+{\sfun{V}{\cbr{\Ket{\phi} \in \mscrH_R}}} \leq \eta',
+\label{eq:main-theorem-Popescu}
+\end{equation}
+where
+\begin{equation}
+\eta = \epsilon + \frac{1}{2}\sqrt{\frac{d_S}{d_E^\text{eff}}}; \qquad
+\eta' = 4\rfun{\exp}{-C d_R \epsilon^2},\quad C = \frac{2}{9\pp^3}.
+\label{eq:main-theorem-supp}
+\end{equation}
+To understand the theorem, first note that the left-hand side of 
+\cref{eq:main-theorem-Popescu} is a probability measure. More over, one can 
+choose $\epsilon = d_R^{-1/3}$ as well, so that
+\begin{equation}
+\eta = \epsilon + \frac{1}{2}\sqrt{\frac{d_S}{d_E^\text{eff}}} \gtrsim 
+d_R^{-1/3};\qquad
+\eta' = 4\rfun{\exp}{-C d_R \epsilon^2} = 4\rfun{\exp}{-C d_R^{+1/3}},
+\end{equation}
+where $d_E^\text{eff} \gg d_S$ is also assumed. In this case, the probability 
+of the deviation greater than $d_R^{-1/3}$ is smaller than an 
+\emph{exponential} of $d_R^{+1/3}$.
+
+Further explanations and proofs of the lemma and the theorem can 
+be found in \cite{Popescu2006,Popescu2007}.
+
+%------------------------------------------------------------------------------
+\section{Distance between the Pure and Mixed States}
+\label{sec:dist-radiation}
+%------------------------------------------------------------------------------
+
+To apply the aforementioned formalism to the Hawking radiation, one recognises 
+the universe in the CGHS model as the total isolated system $U$, whereas the 
+gravitational degrees of freedom as $E$, and the system in concern $S$ is the 
+radiation field. It has been shown in \cite{Demers1996,Kiefer2001} that the 
+reduced state of the radiation field can indeed be \emph{thermal} in certain 
+\emph{decoherence} schemes, while in the collapsing case discussed in 
+\cref{sec:hawrad-1+1dila,sec:1+1ddlt}, the radiation field remains pure.
+
+In this section, the trace distance between the pure and thermal descriptions 
+will be evaluated. Due to technical difficulties, the distance has not been able 
+to be derived exactly. Instead, a lower and an upper bound have been set to the 
+distance by \emph{Fuchs-van de Graaf inequality} in \cref{eq:ineq-fvdg}, where 
+only the calculable \emph{Fidelity} (see \cref{sec:fidelity}) is needed.
+
+Note that the wave functional of the Hawking radiation field 
+\cref{eq:squeezed-wave-functional} is, roughly speaking, the superposition of 
+quantum-mechanical wave functions per Fourier mode,
+\begin{equation}
+\sfun{\chi_b}{g} \sim \sum_p \rfun{\chi_b^\rbr{p}}{g_p}
+= \sum_p \Braket{g_p | \chi_b^\rbr{p}},
+\label{eq:wave-function-decomposed}
+\end{equation}
+where $g_p \coloneqq \rfun{g}{p}$ is the Fourier transform of the field $g$ 
+evaluated at $p$. On the other hand, the thermal state of the free field can 
+also be sloppily written as the product of the quantum-mechanical density 
+operators per mode,
+\begin{equation}
+{\rho}_\text{th} \sim \bigotimes_p {\rho}_\text{th}^\rbr{p}.
+\end{equation}
+By \cref{eq:fidelity-pure-mixed}, the fidelity of $\sfun{\chi_b}{g}$ and 
+$\rho_\text{th}$ can be reduced to the product of the fidelity per mode, because
+\begin{equation}
+\Braket{\chi_b | {\rho}_\text{th} | \chi_b} \sim \prod_p 
+\Braket{\chi_b^\rbr{p} | {\rho}_\text{th}^\rbr{p} | \chi_b^\rbr{p}}.
+\label{eq:expectation-decomposed}
+\end{equation}
+
+Since $\Ket{\chi_b^\rbr{p}}$ is just a quantum-mechanical general Gaussian 
+state (see \cref{sec:single-harosc}), the result in \cref{eq:fidelity-gg-th} 
+can be adapted by substituting
+\begin{equation}
+\Omega = \vbr{p},\qquad \omega = p\,\coth\frac{\pp p}{2\lambda}\quad
+\text{and}\quad T = T_\text{HD} \equiv \frac{\lambda}{2\pp},
+\end{equation}
+yielding the \emph{fidelity per mode}
+\begin{equation}
+F^\rbr{p} = \frac{\sqrt{u-1}}{\sqrt[4]{u^2+u+1}},\qquad
+u \coloneqq \ee^q \equiv \ee^{\vbr{p}/T_\text{HD}},
+\label{eq:fidelity-pt}
+\end{equation}
+so that the trace distance per Fourier mode can be evaluated, see 
+\cref{fig:trace-dist-per-mode}.
+
+\begin{figure}
+\begin{center}
+\input{./graphics/graph_trace_dist_mode_bounds}
+\end{center}
+\caption[Possible value of the trace distance per Fourier mode]{Possible value 
+of the trace distance between mode wave functions in 
+\cref{eq:wave-function-decomposed} and the corresponding thermal density 
+operators. One sees that the difference becomes exponentially small with respect 
+to $p/T_\text{HD}$, which suggests it would be difficult to distinguish the pure 
+and thermal descriptions by detecting the high-energy modes in the Hawking 
+radiation, confirming the results in \cref{sec:corr_Fourier}.
+\label{fig:trace-dist-per-mode}}
+%, evaluated in terms of lower and upper bound by fidelity
+\end{figure}
+
+To approach the trace distance for the wave functional and the total thermal 
+state, one needs to deal with the product with continuous index in 
+\cref{eq:expectation-decomposed}. A popular way to go to the `continuous limit' 
+in \emph{summation} is
+\begin{equation}
+\sum_p \rfun{g}{p} \to \frac{1}{2\pp\Lambda} \int \dd p\,\rfun{g}{p},
+\end{equation}
+where $\Lambda$ has the same dimension as $p$ in order to fix the dimension; in 
+the box-normalisation scheme, for example, the corresponding $\Lambda$ would be 
+proportional to the volume of the box $V$. A similar method may be used to 
+normalise the product, namely
+\begin{equation}
+\prod_p \rfun{f}{p} = \cfun{\exp}{\sum_p \ln\rfun{f}{p}} \to 
+\cfun{\exp}{\frac{1}{2\pp\Lambda}\int \dd p\,\ln\rfun{f}{p}}.
+\end{equation}
+Note that the wave functional \cref{eq:squeezed-wave-functional}, which has 
+always been dealt with, can also be seen as being normalised by the method.
+One thus derives
+\begin{equation}
+F = \cfun{\exp}{\frac{2}{2\pp\Lambda}\int_0^{+\infty}\dd p\,\ln F^\rbr{p}}
+= \rfun{\exp}{-\frac{\pp}{9} \frac{T_\text{HD}}{\Lambda}},
+\end{equation}
+which is shown in \cref{fig:trace-dist-total}.
+
+\begin{figure}
+\begin{center}
+\input{./graphics/graph_trace_dist_total_bounds}
+\end{center}
+\caption[Possible value of the trace distance between pure and thermal 
+descriptions]{Possible value of the trace distance between the pure and thermal 
+descriptions of the Hawking radiation field. One sees that the difference 
+between the two cases is positively (negatively) correlated with the Hawking 
+temperature temperature (mass of black hole). 
+\label{fig:trace-dist-total}}
+\end{figure}
+
+%------------------------------------------------------------------------------
+\section{Discussion}
+\label{sec:dist-discussion}
+%------------------------------------------------------------------------------
+Strictly speaking, the formalism in \cref{sec:arbitrary-canonical} is \emph{not}
+applicable to the radiation field considered here, because they were proved for 
+\emph{finite dimensional systems}, while the cases in this work are all 
+\emph{infinite-dimensional}. However, since a regularised result can be 
+obtained, it is believable that a mathematically rigorous approach exists, which 
+will justify the result, similar to the renormalisation procedure in quantum 
+field theory.
+
+Though the asymptotic behaviour of the trace distance with respect to Hawking 
+temperature has clearly been revealed by setting bounds to it, it is still 
+appealing to calculate its \emph{exact value}. One possible approach is by 
+using the results in \cite{Joos1985}, where the eigenfunctions and eigenvalues 
+of a general Gaussian density operator have been explicitly solved.
+
+The evaluation of the trace distance was motivated by \citeauthor{Hsu2009} in 
+\cite{Hsu2009}, where operational meaning of the distance was also discussed in 
+terms of toy models, which is unfortunately not applicable to the field system. 
+In future works, it is expected that the distance between the pure and thermal 
+states will be understood in terms of \emph{experiments} or \emph{observations}, 
+where the essence of physical science lies.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mythesis"
+%%% End: 

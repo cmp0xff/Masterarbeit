@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+
+
+\input{../preambles/preamble}
+\input{../preambles/mathematics}
+\input{../preambles/physics}
+
+
+
+\addbibresource{main.bib}
+\title{Masterthesis}
+\author{YiFan Wang}
+
+\begin{document}
+
+\begin{nameddef}{The Boulware state}
+$\Ket{B}$ retarded propagator is given by
+\begin{equation}
+\begin{split}
+\rfun{E_\text{B}^+}{x, x'} = \ii\sum_{lm}\int_0^{+\infty}
+&\frac{\dif\omega}{4\pp\omega}\ee^{-\ii\omega\rbr{t-t'}}
+\rfun{Y_{lm}}{\theta,\phi}\rfun{{Y_{lm}}^*}{\theta ',\phi '} \\
+&\cdot\rbr{\rfun{R_l^{\rightarrow}}{\omega\middle| r}
+\rfun{{R_l^{\rightarrow}}^*}{\omega\middle| r'} + 
+\rfun{R_l^{\leftarrow}}{\omega\middle| r}
+\rfun{{R_l^{\leftarrow}}^*}{\omega\middle| r'}}
+\end{split}
+\end{equation}
+\label{nmd:boulware_state}
+\end{nameddef}
+
+\begin{equation}
+\begin{split}
+\rfun{E_\text{H}^+}{x, x'} =
+ \ii \sum_{lm} & \int_{-\infty}^{+\infty}\frac{\dif\omega}{4\pp\omega} \\
+\cdot\biggl( & \ee^{-\ii\omega\rbr{t-t'}}
+\rfun{Y_{lm}}{\theta,\phi}\rfun{{Y_{lm}}^*}{\theta ',\phi '}
+\frac{\rfun{R_l^{\rightarrow}}{\omega\middle| r}
+\rfun{{R_l^{\rightarrow}}^*}{\omega\middle| r'}}{1-\ee^{-2\pp\omega/\kappa}}
+\\
++ & \ee^{+\ii\omega\rbr{t-t'}}
+\rfun{{Y_{lm}}^*}{\theta,\phi}\rfun{Y_{lm}}{\theta ',\phi '}
+\frac{\rfun{{R_l^{\leftarrow}}^*}{\omega\middle| r}
+\rfun{R_l^{\leftarrow}}{\omega\middle| r'}}{\ee^{+2\pp\omega/\kappa}-1}
+\biggr) \\
+& 123
+\end{split}
+\end{equation}
+
+\end{document}

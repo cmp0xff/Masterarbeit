@@ -1,0 +1,46 @@
+% Math symbols and user-defined extensions
+
+
+
+% Mathematical constants
+\newcommand{\ii}{{\mitBbbi}}
+\newcommand{\ee}{{\mitBbbe}}
+
+% Bracket-like
+\newcommand{\rbr}[1]{{\left(#1\right)}}
+\newcommand{\sbr}[1]{{\left[#1\right]}}
+\newcommand{\cbr}[1]{{\left\{#1\right\}}}
+\newcommand{\abr}[1]{{\left<#1\right>}}
+\newcommand{\vbr}[1]{{\left|#1\right|}}
+\newcommand{\fat}[2]{{\left.#1\right|_{#2}}}
+% Differentials
+\newcommand{\cD}{{\mathrm{D}}}
+\newcommand{\ud}{{\mathrm{d}}}
+% Fraction-like
+\newcommand{\frde}[2]{{\frac{\ud #1}{\ud #2}}}
+\newcommand{\frpa}[2]{{\frac{\partial #1}{\partial #2}}}
+% Equal marks
+\newcommand{\eeq}{{\overset{!}{=}}}
+
+
+% amsthm
+\theoremstyle{plain}% default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition} 
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+
+% cleveref
+\crefname{lem}{lemma}{lemmas}
+\Crefname{lem}{Lemma}{Lemmas}
+\crefname{thm}{theorem}{theorems}
+\Crefname{thm}{Theorem}{Theorems}
+\crefname{defn}{definition}{definitions}
+\Crefname{defn}{Definition}{Definitions}
+\crefname{exmp}{example}{examples}
+\Crefname{exmp}{Example}{Examples}

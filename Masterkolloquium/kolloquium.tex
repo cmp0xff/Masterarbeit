@@ -1,0 +1,857 @@
+% $Header: /Users/joseph/Documents/LaTeX/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass{beamer}
+
+\usefonttheme{professionalfonts}%  don't change fonts inside beamer
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  % \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+%\usepackage[english]{babel}
+% or whatever
+
+%\usepackage[latin1]{inputenc}
+% or whatever
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{unicode-math}
+	\setmathfont{Latin Modern Math} % default
+	%\setmathfont[range=\mathalpha]{Asana Math}
+	\setmathfont{Asana Math}[range={\mathbin}] %\mathord
+	\setmathfont{STIX Math}[range={"02609}] % ☉
+	\setmathfont{XITS Math}[range={"1D4B6-"1D4CF}] % Script, Latin, lowercase
+	\setmathfont{Latin Modern Math}[range={"1D608-"1D63B}, sans-style=italic]
+	\setmathfont{Latin Modern Math}[range={
+		"00391-"003A9,
+		"003B1-"003F5, 
+		"1D6A8-"1D6E1},	% Bold Greek
+		sans-style=upright]
+		
+	%\setmathfont{⟨font name⟩}[range=⟨unicode range⟩,⟨font features⟩]
+\usepackage{siunitx}
+% ':=' as \coloneqq
+%\usepackage{mathtools}
+\usepackage{empheq} % numcases
+
+
+%\usepackage{times}
+%\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title%[Short Paper Title] % (optional, use only with long paper titles)
+{Hawking Radiation}
+
+\subtitle{A Comparison of Pure-state and Thermal Description}
+
+\author[Wang] % (optional, use only with lots of authors)
+{Yi-Fan Wang 王一帆}
+%\inst{1} \and %S.~Another\inst{2}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Uni zu Köln] % (optional, but mostly needed)
+{
+  %\inst{1}%
+  Institut für Theoretische Physik \\
+  Universität zu Köln}
+  %\and
+  %\inst{2}%
+  %Department of Theoretical Philosophy\\
+  %University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date%[ASGRC WS1617] % (optional, should be abbreviation of conference name)
+{Masterkolloquium}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{General Relativity and Cosmology}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+\pgfdeclareimage[height=1.0cm]{university-logo}{./bcgs_logo_vektorgrafikNeu}
+\logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\usepackage[citestyle=alphabetic,doi=false,isbn=false,url=false,
+defernumbers=true]%
+	{biblatex}
+\addbibresource{kolloquium.bib}
+
+\usepackage{tikz}
+% \usepackage{tikz-3dplot}
+% \usetikzlibrary{positioning,shapes,arrows}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc}
+% \usetikzlibrary{decorations.markings}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{cleveref}
+
+\usepackage{braket}
+
+% Mathematical constants
+\newcommand{\ii}{{\Bbbi}}
+\newcommand{\ee}{{\Bbbe}}
+\newcommand{\pp}{{\Bbbpi}}
+
+% Bracket-like
+\newcommand{\rbr}[1]{{\left(#1\right)}}
+\newcommand{\sbr}[1]{{\left[#1\right]}}
+\newcommand{\cbr}[1]{{\left\{#1\right\}}}
+\newcommand{\abr}[1]{{\left<#1\right>}}
+\newcommand{\vbr}[1]{{\left|#1\right|}}
+\newcommand{\fat}[2]{{\left.#1\right|_{#2}}}
+% Functions; note the space between the name and the bracket!
+\newcommand{\rfun}[2]{{#1}\mathopen{}\left(#2\right)\mathclose{}}
+\newcommand{\sfun}[2]{{#1}\mathopen{}\left[#2\right]\mathclose{}}
+\newcommand{\cfun}[2]{{#1}\mathopen{}\left\{#2\right\}\mathclose{}}
+\newcommand{\afun}[2]{{#1}\mathopen{}\left<#2\right>\mathclose{}}
+\newcommand{\vfun}[2]{{#1}\mathopen{}\left|#2\right|\mathclose{}}
+% Differentials
+\newcommand{\Dif}{\BbbD}
+\newcommand{\Diff}{\,\BbbD}
+\newcommand{\dd}{\Bbbd}
+\newcommand{\ddf}{\,\Bbbd}
+\newcommand{\dva}{\mupdelta} % no better way?!
+\newcommand{\dvar}{\,\mupdelta}
+% Fraction-like
+\newcommand{\frde}[2]{{\frac{\dd{#1}}{\dd{#2}}}}
+\newcommand{\frDe}[2]{{\frac{\Dif{#1}}{\Dif{#2}}}}
+\newcommand{\frpa}[2]{{\frac{\partial{#1}}{\partial{#2}}}}
+% Equal marks
+\newcommand{\eeq}{{\overset{!}{=}}}
+\newcommand{\lls}{{\overset{!}{<}}}
+\newcommand{\ggt}{{\overset{!}{>}}}
+\newcommand{\lle}{{\overset{!}{\le}}}
+\newcommand{\gge}{{\overset{!}{\ge}}}
+% overline-like marks
+\newcommand{\ol}[1]{{\overline{{#1}}}}
+\newcommand{\ul}[1]{{\underline{{#1}}}}
+\newcommand{\tld}[1]{{\widetilde{{#1}}}}
+\newcommand{\ora}[1]{{\overrightarrow{#1}}}
+\newcommand{\ola}[1]{{\overleftarrow{#1}}}
+\newcommand{\td}[1]{{\widetilde{#1}}}
+\newcommand{\what}[1]{{\widehat{#1}}}
+%\newcommand{\prm}{{\symbol{"2032}}}
+
+% Math operators
+% Why does \DeclareMathOperator not work?
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\opdiv}{div}
+\DeclareMathOperator{\opdeg}{deg}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\tr}{tr}
+
+\DeclareMathOperator{\ad}{ad}
+
+\DeclareMathOperator{\expi}{expi}
+
+% Group and Algebras
+\newcommand{\SO}{\mathsf{SO}\,}
+\newcommand{\SU}{\mathsf{SU}\,}
+\newcommand{\so}{\mathfrak{so}\,}
+\newcommand{\su}{\mathfrak{su}\,}
+
+% Physical constants
+\newcommand{\nG}{\mitsansG} % Newton's constant
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution: 
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+%\section{Motivation}
+
+%\subsection{The Basic Problem That We Studied}
+
+%\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are 
+%optional.}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+%  \begin{itemize}
+%  \item
+%    Use \texttt{itemize} a lot.
+%  \item
+%    Use very short sentences or short phrases.
+%  \end{itemize}
+%\end{frame}
+
+%\begin{frame}{Make Titles Informative.}
+
+%  You can create overlays\dots
+%  \begin{itemize}
+%  \item using the \texttt{pause} command:
+%    \begin{itemize}
+%%    \item
+%      First item.
+%      \pause
+%    \item    
+%      Second item.
+%    \end{itemize}
+%  \item
+%    using overlay specifications:
+%    \begin{itemize}
+%    \item<3->
+%      First item.
+%    \item<4->
+%      Second item.
+%    \end{itemize}
+%  \item
+%    using the general \texttt{uncover} command:
+%    \begin{itemize}
+%      \uncover<5->{\item
+%        First item.}
+%      \uncover<6->{\item
+%        Second item.}
+%    \end{itemize}
+%  \end{itemize}
+%\end{frame}
+
+\section{Hawking Radiation}
+
+\begin{frame}{Hawking Radiation}{Background space-time: sperically collapsing body}
+\begin{center}
+\input{./graphics/graph_hawking_einstein}
+\end{center}
+\end{frame}
+
+\begin{frame}{Hawking Radiation}{Result and interpretation}
+
+\begin{itemize}
+\item An early-time \alert{vacuum} on $\mscrI^-$ in collapsing background
+\begin{equation}
+\rfun{\what{a}}{p}\Ket{h} \coloneqq 0\quad\Rightarrow\quad
+\abr{\rfun{\what{n}_a}{p}}_h \equiv 0
+\end{equation}
+evolves to a late-time state on $\mscrI^+\cup\mscrh^+$ \alert{with particles}
+\cite{HAWKING1974}
+\begin{equation}
+\abr{\rfun{\what{n}_b}{\omega}}_h \approx
+\Gamma_\omega\rbr{\ee^{2\pp\omega/\kappa}-1}^{-1}.
+\label{eq:hawking-distri}
+\end{equation}
+\item Comparing \cref{eq:hawking-distri} with the Bose--Einstein distribution
+\begin{equation}
+\abr{\rfun{\what{n}}{\omega}}_\text{BE} = \rbr{\ee^{\omega/T} - 1}^{-1}, 
+\end{equation}
+one may conclude that \cref{eq:hawking-distri} describes a grey-body
+radiation with the \alert{Hawking temperature} \cite{Hawking1975},
+\begin{equation}
+T_\text{H} \coloneqq \kappa/2\pp.
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Hawking Radiation}{Tension in the interpretation}
+\begin{itemize}
+\item The state $\Ket{h}$ or its density operator is \alert{pure},
+\begin{equation}
+\what{\rho}_h = \Ket{h}\Bra{h},
+\end{equation}
+whilst the Bose--Einstein state of equilibrium bosonic gas
+\begin{equation}
+\what{\rho}_\text{BE} = {Z}^{-1} \ee^{-\what{H}/T}
+Z^{-1} \sim Z^{-1} \sum_E \ee^{-E/T} \Ket{E}\Bra{E}
+\end{equation}
+is \alert{thermal} and \alert{mixed}.
+\item How different are they? \cite{Kiefer2001,Hsu2009}
+\end{itemize}
+\end{frame}
+
+\section{Model of Gravitation}
+
+\begin{frame}{$\rbr{1+1}$-dimensional Dilaton Gravity Model}{Classical theory
+\only<1>{1}\only<2>{2}/2 \cite{Callan1992,Demers1996,Ashtekar2011}}
+
+\only<1>{
+\begin{itemize}
+\item The action of the dilaton gravity model reads
+\begin{align}
+S &= \int \dd^2 x\,\sqrt{-\ol{g}}\,\cbr{\frac{\ee^{-2\ol{\phi}}}{\nG}
+\sbr{\ol{R}+4\rbr{\nabla \ol{\phi}}^2 + 4\lambda^2}
+-\frac{1}{2}\rbr{\nabla f}^2} \nonumber \\
+&= \int \dd^2 x\,\sqrt{-g}\,\cbr{\frac{1}{\nG}\sbr{R\phi + 4\lambda^2}
+-\frac{1}{2}\rbr{\nabla f}^2},
+\label{eq:action-CGHS-dilaton-eli}
+\end{align}
+where in \cref{eq:action-CGHS-dilaton-eli}, the \alert{kinetic term} of the 
+dilaton field $\phi$ is eliminated by substituting $\phi = \ee^{-2\ol{\phi}}$ 
+and $g_{\alpha\beta} = \ee^{-2\ol{\phi}} \ol{g}_{\alpha\beta}$.
+\item Has a solution which \alert{resembles} the collapsing body in 
+$\rbr{3+1}$d Einstein gravitation
+\end{itemize}}
+
+\only<2>{
+\begin{center}
+\input{./graphics/graph_hawking_CGHS}
+\end{center}}
+
+\end{frame}
+
+
+\begin{frame}{$\rbr{1+1}$-dimensional Dilaton Gravity Model}{Quantum theory
+\only<1>{1}\only<2>{2}/2 \cite{Demers1996}}
+
+\begin{itemize}
+\only<1>{
+\item Can formally be canonically quantised as a constraint system
+
+\item Apply a \alert{Born--Oppenheimer}-type approximation to 
+$\sfun{\Psi}{g,\phi,f}$ \cite[§~5.4]{Kiefer2012}
+
+\begin{itemize}
+\item Separate `\emph{Heavy, slow}' gravity and `\emph{light, fast}' matter
+\item Apply WKB approximation to the gravity part
+\item Assume disentanglement $\sfun{\Psi}{g,\phi,f} = \sfun{D}{g, \phi}
+\sfun{\chi}{g, \phi, f}$
+\end{itemize}
+
+\item Insert the ansatz $\sfun{\Psi}{g,\phi,f} = \ee^{\ii\rbr{\nG^{-1}S_0 + 
+S_1 + \nG S_2 + \ldots}}$
+
+\begin{itemize}
+\item Order $\nG^{-1}$: Hamilton--Jacobi equation for pure gravity
+\item Order $\nG^{0}$: functional \alert{Schrödinger equation for matter}
+\begin{align}
+\ii \frpa{\chi}{t} &= \what{H}_\text{m} \chi,
+\label{eq:functional-sch} \\
+\what{H}_\text{m} &\equiv \frac{1}{2}\int_{0}^{+\infty} \dd k\,
+\rbr{-\frac{\mbfdelta^2}{\mbfdelta \rfun{f^2}{k}} + k^2 \rfun{f^2}{k}}.
+\end{align}
+\end{itemize}}
+
+\only<2>{
+\item At early time, the \alert{ground-state} solution to 
+\cref{eq:functional-sch} is 
+%(eq.\ (48))
+\begin{equation}
+\sfun{\chi_0}{f} \propto
+	\cfun{\exp}{-\frac{1}{2}\int_{0}^{+\infty}\dd k\, k \, \rfun{f}{k}^2},
+\end{equation}
+while at late time it evolves to %(eq.\ (57) in \cite{Demers1996})
+\begin{equation}
+\sfun{\chi_b}{g} \propto 
+\cfun{\exp}{-\int_{-\infty}^{+\infty}\dd p\, p \,\rfun{\coth}{\frac{\pp 
+p}{2\lambda}} \vbr{\rfun{g}{p}}^2},
+\label{eq:squeezed-wave-functional}
+\end{equation}
+where $\rfun{f}{k}$ and $\rfun{g}{p}$ are the Fourier transform of the matter 
+field at early and late time, respectively.
+%\begin{equation}
+%\rfun{g}{k} = \int_{-\infty}^{+\infty}\dd v\,
+%\frac{\ee^{-\ii k v}}{\sqrt{2\pp}} \rfun{f}{v},
+%\end{equation}
+
+\item At late time, \alert{particle-number expectations} are
+\begin{equation}
+\abr{\rfun{\what{n}_b}{p}}_{\chi_b} = \rbr{\ee^{2\pp\vbr{p}/\lambda}-1}^{-1},
+\end{equation}
+leading to a Hawking-like \alert{black-body temperature}
+\begin{empheq}[box=\fbox]{equation}
+T_\text{HD} \coloneqq \lambda/2\pp.
+\label{eq:hawking-dilaton}
+\end{empheq}}
+
+\end{itemize}
+
+
+
+%\item the wave functional of which 
+%has a semi-classical expansion (eq.\ (10) in \cite{Demers1996})
+%\begin{equation}
+%\sfun{\Psi}{\rho,\phi,f} = \ee^{\ii\rbr{\nG^{-1}S_0 + S_1 + \nG S_2 + \ldots}}
+%\end{equation}
+
+\end{frame}
+
+\section{Correlator of Field Strength}
+
+%\begin{frame}{Correlation of the Field Strength}{Introduction}
+%\begin{itemize}
+%\item Measures the res
+%\end{itemize}
+
+
+%\end{frame}
+
+\begin{frame}{Correlation of Fourier Modes}{The discrepancy}
+
+%\begin{empheq}[left=\empheqlbrace]{align}
+%&\frac{\pp}{4\lambda} q^{-1}, &\quad \text{vacuum};
+%\label{eq:spectrum-gs} \\
+%&\frac{1}{8T_\text{HD}}\frac{\rfun{\tanh}{q/4}}{q/4};
+%\label{eq:spectrum-pure} \\
+%&\frac{1}{4T_\text{HD}} \frac{\rfun{\coth}{q/2}}{q/2},
+%&\quad \text{thermal},
+%\label{eq:spectrum-thermal}
+%\end{empheq}
+The Fourier-mode correlators of different states can be calculated,
+\begin{equation}
+\abr{\rfun{\what{g}^\dagger}{p_1}\rfun{\what{g}}{p_2}} =
+\frac{1}{T_\text{HD}} \rfun{\delta}{p_1 - p_2} \cdot
+\begin{cases}
+\frac{1}{2} \frac{1}{q},
+&\quad \text{vacuum};\\
+\frac{1}{8}\frac{\tanh\frac{q}{4}}{\frac{q}{4}},
+&\quad \chi_b; \\
+\frac{1}{4} \frac{\coth\frac{q}{2}}{\frac{q}{2}},
+&\quad \rfun{\what{\rho}_\text{BE}}{T_\text{HD}},
+\end{cases}
+\end{equation}
+where $q \coloneqq p_1/T_\text{HD}$.
+
+Note that
+\begin{equation}
+\abr{\rbr{\mbfDelta\what{g}}^2} = \abr{\what{g}^2} - \abr{\what{g}}^2 = 
+\abr{\what{g}^2} .
+\end{equation}
+\end{frame}
+
+\begin{frame}{Correlation of Fourier Modes}{Fluctuation of the Fourier 
+modes: diagram in log-log scale}
+
+\begin{center}
+\input{./graphics/graph_fluc_fourier_color}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Correlation of Fourier Modes}{Fluctuation of the Fourier 
+modes: interpretation}
+
+\begin{itemize}
+	\item Vacuum fluctuation
+	\begin{equation}
+	\abr{\vbr{\what{g}}^2}_\text{vac} \sim \rfun{\Omicron}{q^{-1}}
+	\end{equation}
+
+	\item A black hole does \alert{not} alter the \alert{high}-energy
+	processes.
+	\begin{equation}
+	\abr{\vbr{\what{g}}^2}_{\chi_b} \approx
+	\abr{\vbr{\what{g}}^2}_\text{th} \approx
+	\abr{\vbr{\what{g}}^2}_\text{vac} \sim \rfun{\Omicron}{q^{-1}},
+	\quad \vbr{p} \gg T_\text{HD}
+	\end{equation}
+
+	\item A black hole \alert{suppresses} low-energy fluctuation of the
+	\alert{pure} state, while \alert{enhancing} that of the
+	\alert{thermal} state.
+	\begin{equation}
+	\rfun{\Omicron}{1} \sim \abr{\vbr{\what{g}}^2}_{\chi_b} \ll
+	\abr{\vbr{\what{g}}^2}_\text{vac} \ll
+	\abr{\vbr{\what{g}}^2}_\text{th} \sim \rfun{\Omicron}{q^{-2}},
+	\quad \vbr{p} \ll T_\text{HD}
+	\end{equation}
+	\item Critical scale $\vbr{p} \sim T_\text{HD}$
+\end{itemize}
+
+\end{frame}
+
+\section{Distance between Density Operators}
+
+\begin{frame}{Another New Foundation of Statistical Physics 
+\cite{Popescu2006}}{Specific and easy version of the construction}
+
+\begin{itemize}
+\item Total isolated system $U$ with \alert{energy} constraint $\abr{\what{H}_U} 
+\coloneqq E_U$, divided into a \alert{(sub)system} $S$ and an environment $E$
+
+\item Hilbert spaces $\mscrH_R \supseteq \mscrH_U = \mscrH_S \otimes \mscrH_E$;
+$\what{1}_R$ identity on $\mscrH_R$, dimension $d_R \coloneqq \dim \mscrH_R < 
++\infty$
+
+\item Equiprobable / maximal-ignorant state of $U$
+\begin{equation}
+\what{\mscrE}_R \coloneqq d_R^{-1} \what{1}_R \in \mscrH_R
+\end{equation}
+
+\item Hamiltonians $\what{H}_U = \what{H}_S + \what{H}_E + \what{H}_\text{int}$
+
+\item \alert{Canonical state} of $S$ with energy 
+constraint \cite[§~28]{Landau1980}
+\begin{equation}
+\what{\Omega}_S^\rbr{\text{E}} \coloneqq \tr_E \what{\mscrE}_R 
+\propto\rfun{\exp}{- 
+\what{H}_S/T_\text{th}}
+\end{equation}
+
+\item \alert{Theorem}: $\forall \Ket{\phi} \in \mscrH_R$, the reduced state of 
+$S$
+\begin{empheq}[box=\fbox]{equation}
+\tr_E \Ket{\phi}\Bra{\phi} \eqqcolon \rfun{\what{\rho}_S}{\phi} \approx 
+\what{\Omega}_S^\rbr{\text{E}}.
+\end{empheq}
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Another New Foundation of Statistical Physics 
+\cite{Popescu2006}}{Generic and exact version of the construction}
+
+\begin{itemize}
+\item \alert{Arbitrary} constraint $R$; study the \alert{trace 
+distance} $T$ between $\rfun{\what{\rho}_S}{\phi}$ and $\what{\Omega}_S$
+
+\item Lemma: \alert{average distance} is small w.r.t.\ $d_S/d_E^\text{eff}$
+\begin{equation}
+\abr{\rfun{T}{\rfun{\what{\rho}_S}{\phi}, \what{\Omega}_S}} \le 
+\tfrac{1}{2}\sqrt{d_S/d_E^\text{eff}}
+\end{equation}
+
+\item Theorem: \alert{probability of large deviation} is exponentially 
+small w.r.t.\ the distance; an easy version
+\begin{equation}
+\frac{\sfun{V}{\cbr{\Ket{\phi} \,\Big |\,
+\rfun{T}{\rfun{\what{\rho}_S}{\phi}, \what{\Omega}_S} \geq d_R^{-\frac{1}{3}}}}}
+{\sfun{V}{\cbr{\Ket{\phi} }}} \leq
+4\rfun{\exp}{- \frac{2d_R^{\frac{1}{3}}}{9\pp^3} }
+\end{equation}
+
+\item Effective dimension of $E$: setting
+$\what{\Omega}_E = \tr_S \what{\mscrE}_R$,
+\begin{equation}
+d_U/d_S \equiv d_E \ge d_E^\text{eff}
+\coloneqq \rbr{\tr \what{\Omega}_E^2}^{-1} \ge d_R/d_S.
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Trace Distance \cite[ch.~9]{Wilde2009}}{Definitions}
+\begin{itemize}
+\item Trace distance between Hermitian operators $\what{M}$ and $\what{N}$
+\begin{equation}
+\rfun{T}{\what{M}, \what{N}} \coloneqq \frac{1}{2} 
+\tr \sqrt{\rbr{\what{M}-\what{N}}^\dagger\rbr{\what{M}-\what{N}}}
+\label{eq:def-trace-dist}
+\end{equation}
+\begin{itemize}
+\item Positivity, homogeneity, triangle ineq., isometric inv.
+\end{itemize}
+\item For \alert{density operators} $\what{\rho}$ and $\what{\sigma}$,
+\begin{itemize}
+\item $0 \le \rfun{T}{\what{\rho}, \what{\sigma}} \le 1.$
+\item Controlled by \alert{fidelity} in \cite{Fuchs1999}
+\begin{equation}
+1 - \rfun{F}{\what{\rho},\what{\sigma}} \le \rfun{T}{\what{\rho},\what{\sigma}}
+\le \sqrt{1 - \rfun{F^2}{\what{\rho},\what{\sigma}}},
+\label{eq:ineq-fvdg}
+\end{equation}
+where we only need
+\begin{equation}
+\rfun{F}{\Ket{\alpha},\what{\sigma}} \coloneqq \sqrt{\Braket{\alpha | 
+\what{\sigma} | \alpha}}.
+\end{equation}
+\item In our application, $T$ is difficult while $F$ can be obtained.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Trace Distance \cite[ch.~9]{Wilde2009}}{Interpretation}
+\begin{itemize}
+\item Maximal probability-difference obtainable
+\begin{equation}
+\rfun{T}{\what{\rho}, \what{\sigma}} = \max_{0 \le \what{\Lambda} \le \what{1}}
+\cfun{\tr}{\what{\Lambda}\rbr{\what{\rho}-\what{\sigma}}},
+\end{equation}
+where all eigenvalues of $\what{\Lambda}$ are in the range $\sbr{0,1}$
+\item E.g.\ $\what{\Lambda} \coloneqq \Ket{\alpha}\Bra{\alpha}$, $\Ket{\alpha}$
+eigenstate of $\what{\Alpha}$ with eigenvalue $\alpha$
+\begin{itemize}
+\item $\cfun{\tr}{\what{\Lambda}\what{\rho}}$: the probability of getting
+$\alpha$ in measuring $\what{\Alpha}$
+\item $\cfun{\tr}{\what{\Lambda}\rbr{\what{\rho}-\what{\sigma}}}$: the
+difference of the probability above
+\item $\rfun{T}{\what{\rho}, \what{\sigma}}$: the maximal value of the 
+difference above
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+%\begin{frame}{Distances between the Density Operators}{Fidelity: introduction}
+%\begin{itemize}
+%\item Fidelity \cite[ch.~6]{Petz2008}
+%\begin{align}
+%\rfun{F}{\Ket{\alpha},\Ket{\beta}} &= \vbr{\Braket{\alpha | \beta }} \\
+%\rfun{F}{\Ket{\alpha},\what{\sigma}} &= \sqrt{\Braket{\alpha | \what{\sigma} | 
+%\alpha}} \\
+%\rfun{F}{\what{\rho},\what{\sigma}} &= \tr\sqrt{\what{\rho}^\frac{1}{2} 
+%\what{\sigma} \what{\rho}^\frac{1}{2}}
+%\end{align}
+
+
+
+%\end{itemize}
+
+%\end{frame}
+
+\begin{frame}{Distances between the Density Operators}{\only<1-2>{Single-mode 
+trace distances}\only<3-4>{All-mode trace distance}\only<2,4>{, bounds set by 
+fidelity and \cref{eq:ineq-fvdg}}}
+
+\only<1>{
+\begin{itemize}
+%\item Consider a general Gaussian state
+%\begin{equation}
+%\Braket{g | \omega} 
+%\propto \ee^{-\frac{\omega}{2}g^2}
+%\end{equation}
+%of a harmonic oscillator $\what{H} = \frac{1}{2}\rbr{\what{\pi}^2
+%+ \Omega^2 \what{g}^2}$.
+
+%\item $\rfun{F}{\Ket{\omega}, \rfun{\what{\rho}}{T}}$ can be exactly calculated,
+%with $\rfun{\what{\rho}}{T}$ being thermal at arbitrary temperature $T$
+
+%\item Taking $\Omega = p$, $\omega = p\,\coth\frac{\pp p}{2\lambda}$ 
+%and $T = T_\text{HD}$ (%
+%\crefrange{eq:squeezed-wave-functional}{eq:hawking-dilaton}),
+\item $\sfun{\chi}{f} \sim S$, $\sfun{\Psi}{g, \phi, f} \sim U$
+
+\item The pure wave functional can sloppily be decomposed $\sfun{\chi_b}{g} 
+\sim \sum_p \rfun{\chi_b^\rbr{p}}{g_p} \equiv \sum_p \Braket{g_p | 
+\chi_b^{\rbr{p}}}$, where $g_p \coloneqq \rfun{g}{p}$
+
+\item So does the thermal density operator $\rfun{\what{\rho}_\text{th}}{T} \sim
+\bigotimes_p \rfun{\what{\rho}_\text{th}^\rbr{p}}{T}$
+
+\item Fidelity in \cref{eq:ineq-fvdg} can be factorised as well
+\begin{equation}
+F \equiv \Braket{\chi_b | \what{\rho}_\text{th} | \chi_b}^\frac{1}{2} \sim
+\prod_p \Braket{\chi_b^{\rbr{p}} | \what{\rho}_\text{th}^{\rbr{p}}
+| \chi_b^{\rbr{p}}}^\frac{1}{2} \eqqcolon \prod_p F^{\rbr{p}};
+\end{equation}
+\item $F^{\rbr{p}}$ can be computed \alert{in order to find bounds of $T$}
+\begin{equation}
+\rfun{F^{\rbr{p}}}{\Ket{p},\rfun{\what{\rho}_\text{th}^\rbr{p}}{T_\text{HD}}}
+= \frac{\sqrt{u-1}}{\sqrt[4]{u^2+u+1}},\quad
+u \coloneqq \ee^q \equiv \ee^{\vbr{p}/T_\text{HD}}.
+\label{eq:fidelity-pt}
+\end{equation}
+\end{itemize}}
+
+\only<2>{
+\begin{center}
+\input{./graphics/graph_trace_dist_mode_bounds_color}
+\end{center}
+%Difference goes exponentially small w.r.t.\ $p$ or $\rbr{\text{wave 
+%length}}^{-1}$
+}
+
+\only<3>{
+\begin{itemize}
+%\item Inserting \cref{eq:fidelity-pt} into \cref{eq:ineq-fvdg} and expanding 
+%$u$ at $\infty$ yields
+%\begin{equation}
+%\frac{3}{4} \ee^{-\frac{2 \pp  p}{\lambda }} \le 1-F \le T \le \sqrt{1-F^2} \le
+%\sqrt{\frac{3}{2}} \ee^{-\frac{\pp  p}{\lambda }}
+%\end{equation}
+
+\item `Go to the continuum limit': $\Lambda$ dimension regulator
+\begin{equation}
+\sum_p \rfun{g}{p} \to \frac{1}{2\pp\Lambda} \int \dd p\,\rfun{g}{p},
+\end{equation}
+
+\item Analogously, to regularising a positive product
+\begin{equation}
+\prod_p \rfun{f}{p} \equiv \cfun{\exp}{\sum_p 
+\ln\rfun{f}{p}} \to \cfun{\exp}{\frac{1}{2\pp\Lambda}
+\int \dd p\,\ln\rfun{f}{p}}
+\end{equation}
+
+\item Regularised $F$ can be calculated \alert{in order to set bounds of $T$}
+\begin{equation}
+\rfun{F}{\chi_b, \what{\rho}_\text{th}} = 
+\cfun{\exp}{\frac{2}{2\pp\Lambda}\int_0^{+\infty}\dd p\,\ln F^{\rbr{p}}} =
+\rfun{\exp}{-\frac{\pp}{9} \frac{T_\text{HD}}{\Lambda}}
+\end{equation}
+\end{itemize}}
+
+\only<4>{
+\begin{center}
+\input{./graphics/graph_trace_dist_total_bounds_color}
+\end{center}
+%Difference goes exponentially small w.r.t.\ $T_\text{HD}$ or $M^{-1}$
+}
+
+\end{frame}
+
+
+
+\section*{Summary}
+
+\begin{frame}{Summary}
+
+  % Keep the summary *very short*.
+\begin{itemize}
+\item
+Compared the \alert{pure} and the \alert{thermal} descriptions of the
+radiation within the solvable dilaton gravity model
+\item
+Fourier-mode fluctuation: that of the thermal state \alert{diverges} faster
+than the vacuum case does at low energy, while the pure-state fluc.\ remains
+\alert{finite}; at high energies they \alert{converge}.
+\item
+Trace distance: goes exponentially \alert{small} with black hole 
+\alert{temperature} going to zero.
+\end{itemize}
+  
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
+    Outlook
+    \begin{itemize}
+	\item Understand the dilaton gravity model
+	\item Understand the Fourier-mode fluctuation
+	\item Evaluate the real space correlator
+	\item Understand practical meaning of trace distance
+	\item Understand the regulator in total trace distance
+	\item Evaluate the exact trace distance
+	\item Include the gravitational wave functional
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+% All of the following is optional and typically not needed. 
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{For Further Reading}
+    
+%  \begin{thebibliography}{10}
+    
+  \beamertemplatebookbibitems
+  % Start with overview books.
+\printbibliography[type=book]
+
+%  \bibitem{Author1990}
+%    A.~Author.
+%    \newblock {\em Handbook of Everything}.
+%    \newblock Some Press, 1990.
+ 
+    
+  \beamertemplatearticlebibitems
+  % Followed by interesting articles. Keep the list short. 
+\printbibliography[nottype=book]
+
+%  \bibitem{Someone2000}
+%    S.~Someone.
+%    \newblock On this and that.
+%    \newblock {\em Journal of This and That}, 2(1):50--100,
+%    2000.
+%  \end{thebibliography}
+\end{frame}
+
+
+
+\end{document}
+
+

@@ -1,0 +1,137 @@
+%==============================================================================
+\chapter{Distances in Quantum Theory}
+\label{chap:distappd}
+%==============================================================================
+
+This chapter follows mostly \cite{Wilde2009}. Some conventions follow those in 
+\cite{Petz2008}.
+
+%------------------------------------------------------------------------------
+\section{Trace Distance}
+\label{sec:trace-dist}
+%------------------------------------------------------------------------------
+
+To begin with, define the \emph{trace norm} or \emph{$l_1$-norm} of an 
+Hermitian operator $M$ as
+\begin{equation}
+	\dvbr{M}_1 \coloneqq \tr\sqrt{M^\dagger M}.
+\end{equation}
+When the spectral decomposition $M = \sum_i \mu_i \Ket{i}\Bra{i}$ exists, the 
+trace norm reads
+\begin{equation}
+	\dvbr{M}_1 \equiv \sum_i\vbr{\mu_i},
+\end{equation}
+so the name $l_1$-norm comes. It is positive definite and homogeneous; the 
+triangle inequality also holds. Thus it can be used to define the \emph{trace 
+distance} between Hermitian operators ${M}$ and ${N}$ as
+\begin{equation}
+\rfun{T}{{M}, {N}} \coloneqq \frac{1}{2} \dvbr{M-N}_1 \equiv
+\frac{1}{2} \tr \sqrt{\rbr{{M}-{N}}^\dagger\rbr{{M}-{N}}}.
+\label{eq:def-trace-dist}
+\end{equation}
+Now consider density operators $\rho$ and $\sigma$ only. Since $\dvbr{\rho}_1 
+\equiv 1$, one sees
+\begin{equation}
+0 \le \rfun{T}{{\rho}, {\sigma}} \le 1,
+\label{eq:def-trace-prop}
+\end{equation}
+followed from positive definiteness and triangle inequality.
+
+The following lemma helps constructing a physical interpretation of the 
+distance. Let the Hermitian operator $\Lambda$ be such that all its eigenvalues 
+lies within $\sbr{0,1}$, then
+\begin{equation}
+\rfun{T}{{\rho}, {\sigma}} = \max_{0 \le {\Lambda} \le \Bbbone}
+\cfun{\tr}{{\Lambda}\rbr{{\rho}-{\sigma}}}.
+\end{equation}
+To understand this, take $\Lambda \equiv \Ket{\alpha}\Bra{\alpha}$,
+where $\Ket{\alpha}$ is the eigenket of some observable $\Alpha$, with 
+eigenvalue $\alpha$. Then $\tr\cbr{\Lambda \rho}$ tells the probability of 
+measuring $\Alpha$ which gives the result $\alpha$. Therefore $\tr\cbr{\Lambda 
+\rbr{\rho-\sigma}}$ gives the difference of the probability above for $\rho$ and 
+$\sigma$, and $\rfun{T}{{\rho}, {\sigma}}$ is the maximal value of the 
+difference above.
+
+Though the trace distance is used in formulating \cref{chap:quantifing}, it is 
+rather formidable to compute due to the operatorial square root in 
+\cref{eq:def-trace-dist}. Therefore the author seeks other ways to evaluate the 
+quantity.
+
+%------------------------------------------------------------------------------
+\section{Fidelity}
+\label{sec:fidelity}
+%------------------------------------------------------------------------------
+
+Fidelity is another means to compare two quantum states. The simplest case 
+of fidelity is that of two pure states,
+\begin{equation}
+\rfun{F}{\Ket{\alpha},\Ket{\beta}} \coloneqq \vbr{\Braket{\alpha | \beta }}.
+\end{equation}
+One sees that it is just the modulus of the transition amplitude, a measure of 
+\emph{faithfulness}. For more general cases, fidelity is defined as
+\begin{align}
+\rfun{F}{\Ket{\alpha},{\sigma}} &\coloneqq \sqrt{\Braket{\alpha | {\sigma} | 
+\alpha}}, \\
+\label{eq:fidelity-pure-mixed}
+\rfun{F}{{\rho},{\sigma}} &\coloneqq \tr\sqrt{{\rho}^\frac{1}{2} 
+{\sigma} {\rho}^\frac{1}{2}}.
+\end{align}
+In applications in this work, fidelity is solvable because only
+\cref{eq:fidelity-pure-mixed} is needed.
+
+An important property of fidelity is that it follows the \emph{Fuchs--van de 
+Graaf inequality} \cite{Fuchs1999})
+\begin{equation}
+1 - \rfun{F}{{\rho},{\sigma}} \le \rfun{T}{{\rho},{\sigma}}
+\le \sqrt{1 - \rfun{F^2}{{\rho},{\sigma}}}.
+\label{eq:ineq-fvdg}
+\end{equation}
+In this work, the trace distances are evaluated by computing the fidelities 
+exactly and inserting them to \cref{eq:ineq-fvdg}.
+
+Consider a single harmonic oscillator with intrinsic frequency $\Omega$, a 
+thermalised state of it at temperature $T$ described by a density operator 
+$\rfun{\rho}{T}$, as well as a generalised Gaussian state $\Ket{\omega}$ (see 
+\cref{sec:single-harosc}). In the following the fidelity of them will be 
+calculated.
+
+Since $\rfun{\rho}{T}$ is diagonal in the energy-eigenstate basis $\Ket{n}$, one 
+has
+\begin{equation}
+\Braket{\omega | \rfun{\rho}{T} | \omega} = \sum_{n=0}^{+\infty}
+\Braket{\omega | n} \Braket{n | \rfun{\rho}{T} | n} \Braket{n | \omega},
+\label{eq:fidelity-1}
+\end{equation}
+in which
+\begin{align}
+\Braket{n | \omega} &= 
+\begin{cases} \rbr{\Omega  \Re\omega }^{\frac{1}{4}}
+\dfrac{2^{\frac{1}{2}-m} \sqrt{(2 m)!} }{m!}
+\dfrac{(\Omega -\omega )^m}{(\omega +\Omega )^{m+\frac{1}{2}}}
+& n = 2m, \\
+0 & n = 2m+1,
+\end{cases}
+\tag{\ref{eq:n|omega} revisited} \\
+\Braket{n | \rho | n} &=
+\frac{1}{Z}\cfun{\exp}{-\rbr{n+\frac{1}{2}}\frac{\Omega}{T}}
+\equiv 
+\rbr{\ee^{\Omega/T}-1} \cfun{\exp}{-\rbr{n+1}\frac{\Omega}{T}}.
+\label{eq:n|rho|n}
+\end{align}
+Inserting \cref{eq:n|omega,eq:n|rho|n} into \cref{eq:fidelity-1}, one finds 
+that each term in the summation is of the form $b\cdot\binom{2m}{m}a^{2m}$ 
+where $a$ and $b$ are expressions of $\Omega$, $\omega$ and $T$, which can be 
+computed by using
+\begin{equation}
+\arcsin z = \sum_{n=0}^{+\infty} \binom{2n}{n}\frac{z^{2n+1}}{4^n\rbr{2n+1}}
+\end{equation}
+and taking derivative with respect to $z$ on both sides. Therefore the fidelity 
+of $\rho(T)$ and $\Ket{\omega}$ is computed to be
+\begin{equation}
+\rfun{F}{\Ket{\omega}, \rho(T)} = \sqrt{2} \sqrt[4]{\frac{\Omega  \Re{\omega} 
+\left(\ee^{\Omega /T}-1\right)^2}{(\Omega -\Re{\omega})^2+\Im{\omega}^2 - 
+\ee^{2 \Omega/T} \rbr{(\Omega +\Re{\omega})^2+\Im{\omega}^2})}},
+\label{eq:fidelity-gg-th}
+\end{equation}
+which can be used to set a bound on the trace distance by \cref{eq:ineq-fvdg}.
+

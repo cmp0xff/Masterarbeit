@@ -1,0 +1,57 @@
+\documentclass{article}
+\title{Newtheorem and theoremstyle test}
+\author{Michael Downes\\updated by Barbara Beeton}
+
+%\usepackage[exercise]{amsthm}
+\usepackage{amsthm}
+
+\newtheoremstyle{varplain}% name
+	{}{}%      Spaces above and below, empty = `usual value'
+	{\itshape}% Body font
+	{}%         Indent amount (empty = no indent, \parindent = para indent)
+	{\bfseries}% Thm head font
+	{}%        Punctuation after thm head
+	{\newline}% Space after thm head: \newline = linebreak
+	{\thmnumber{(#2)}\thmname{ #1}{\normalfont\thmnote{ (#3)}}}
+	%         Thm head spec
+
+\newtheoremstyle{vardefinition}% name
+	{}{}%      Spaces above and below, empty = `usual value'
+	{\upshape}% Body font
+	{}%         Indent amount (empty = no indent, \parindent = para indent)
+	{\bfseries}% Thm head font
+	{}%        Punctuation after thm head
+	{\newline}% Space after thm head: \newline = linebreak
+	{{\normalfont\thmnumber{(#2)}}\thmname{ #1}{\normalfont\thmnote{ (#3)}}}
+	%         Thm head spec
+
+\theoremstyle{varplain}
+\newtheorem{test}{Test}
+
+\theoremstyle{plain}
+\newtheorem{testt}{Test}
+
+\theoremstyle{vardefinition}
+\newtheorem{defnv}{Definition}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+\begin{document}
+\begin{test}[Full]
+test.
+\end{test}
+
+\begin{testt}[Full]
+noemal test.
+\end{testt}
+
+\begin{defnv}[Full]
+something
+\end{defnv}
+
+\begin{defn}[Full]
+something else
+\end{defn}
+
+\end{document}

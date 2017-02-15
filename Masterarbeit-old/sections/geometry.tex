@@ -1,0 +1,263 @@
+\section{Aspects of space-time geometry}
+\label{sec:geometry}
+
+\subsection{Aspects of the fundamentals}
+
+%R_{\mu\nu}-\frac{1}{2}R g_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pp\nG T_{\mu\nu}.
+
+Cauchy surface
+
+Globally hyperbolic
+
+Surface gravity
+
+\cite{carroll2004spacetime}
+
+\cite{griffiths2009exact}
+
+\subsection{Maximally symmetric space-times}
+
+\begin{nameddef}{Unit $2$-sphere}
+\begin{equation}
+\dif\Omega^2 = \dif\theta^2 + \sin^2\theta\diff\phi^2
+\end{equation}
+is the metric of unit $2$-sphere $S^2$.
+\end{nameddef}
+
+\begin{nameddef}{Spherically symmetric space-times}
+All spherically symmetric space-times in this work possess coordinates
+in which the metric takes the form
+\begin{equation}
+\dif s^2 = -\rfun{f}{r}\diff t^2 + \rfun{f}{r}^{-1}\dif r^2
++ r^2 \diff \Omega^2,
+\label{eq:generic-s-metric}
+\end{equation}
+which is manifest in its $\rfun{\SO}{3}$ symmetry.
+\end{nameddef}
+
+\begin{nameddef}{Spherical coordinates of maximally symmetric space-times}
+\begin{equation}
+\rfun{f}{r} = 1 - \frac{\nG\Lambda}{3}r^2.
+\end{equation}
+\end{nameddef}
+
+\begin{equation}
+\frac{t+r}{R_0}=\tan\frac{\eta+\chi}{2},\qquad
+\frac{t-r}{R_0}=\tan\frac{\eta-\chi}{2}.
+\end{equation}
+\begin{nameddef}{Conformal coordinates}
+\begin{equation}
+\dif s^2 = \frac{R_0^2}{\rbr{\cos\eta+\cos\chi}^2}
+\rbr{-\dif\eta^2+\dif\chi^2+\sin^2\chi\diff\Omega^2}
+\end{equation}
+\end{nameddef}
+
+\subsection{Schwarzschild space-time}
+
+\subsubsection{Coordinates}
+
+\begin{nameddef}{Schwarzschild coordinates}
+\label{nd:sch-coord}
+
+%\cite{schwarzschild1916}
+
+The metric of Schwarzschild space-time
+is given by \cref{eq:generic-s-metric} with
+\begin{equation}
+\rfun{f}{r} = \rbr{1-\frac{\rSch}{r}},
+\label{eq:co-scsc}
+\end{equation}
+%\begin{equation}
+%\dif s^2 = -\rbr{1-\frac{\rSch}{r}}\diff t^2+\rbr{1-\frac{\rSch}{r}}^{-1}
+%\diff r^2 + r^2\diff\Omega^2,
+%\end{equation}
+where $\rSch = 2\nG M$ is the Schwarzschild radius.
+%The ranges of three of the coordinates are
+%$-\infty < t < +\infty$, $0 < \theta < \pp$; $0 < \phi < 2\pp$; the range of
+%$r$ is $\rbr{0, \rSch} \cup \rbr{\rSch, +\infty}$, making the coordinates covering
+%two disjoint patches of the space-time.
+\end{nameddef}
+
+
+To exploit the Weyl-flatness of $\mathcal{M}/S^2$, one may transform the
+holonomic co-frame by
+\begin{equation}
+\dif r^* = \rbr{1-\frac{\rSch}{r}}^{-1}\diff r,
+\label{eq:trsf-dtosc}
+\end{equation}
+which can be integrated to
+\begin{equation}
+\ee^{r_*/\rSch-1} =
+\rbr{r/\rSch-1}\ee^{r/\rSch-1},
+\label{eq:trsf-gtosc}
+\end{equation}
+generating the transformations
+\begin{equation*}
+r_* = r+\rSch\rfun{\ln}{\frac{r}{\rSch}-1}\quad\text{and}\quad
+r = \rSch\rbr{1+\rfun{W}{\ee^{r_*/\rSch-1}}},
+%\label{eq:trsf-scto}
+\end{equation*}
+where $\rfun{W}{x}$ is known as the Lambert $W$-function
+\cite{weissteinLambert}, satisfying
+\begin{equation}
+W(x)\ee^{W(x)} = x.
+\end{equation}
+Transformation of \cref{eq:co-scsc} by \cref{eq:trsf-dtosc} gives
+\begin{nameddef}{Regge-Wheeler tortoise coordinates}
+The metric of Schwarzschild space-time is given by
+\begin{equation}
+\dif s^2 = \rbr{1-\frac{\rSch}{r}}\rbr{ -\diff t^2 + \diff {r_*}^2}
++ \rfun{r}{r_*}^2\diff\Omega^2.
+\end{equation}
+%The range of $r_*$ is $\rbr{-\infty, +\infty}$, corresponding to
+%$r \in \rbr{\rSch, +\infty}$.
+\end{nameddef}
+
+
+In order to keep the causal structure in further coordinate transformations,
+switch first to the \emph{light-cone} coordinates
+\begin{equation}
+u = t-r_*\qquad v = t+r_*.
+%\\t = \frac{u+v}{2},\quad r_* = \frac{-u+v}{2},
+\label{eq:trsf-tlto}
+\end{equation}
+Using one of them to replace $t$ in \cref{nd:sch-coord} gives
+\begin{nameddef}{Eddington-Finklestein coordinates}
+The advanced (using $v$) and retarded ($u$) Eddington-Finklestein
+coordinates give the forms
+\begin{align}
+\dif s^2
+&= -\rbr{1-\frac{\rSch}{r}}\diff v^2 + 2\diff v\diff r + r^2\diff\Omega^2 \\
+&= -\rbr{1-\frac{\rSch}{r}}\diff u^2 - 2\diff u\diff r + r^2\diff\Omega^2 
+\end{align}
+to the metric, respectively.
+%The ranges of $u$ and $r$ are now both $\rbr{-\infty, +\infty}$.
+\end{nameddef}
+Note that the coordinate singularity at $r=\rSch$ in \cref{nd:sch-coord} has
+been eliminated.
+
+whereas the components of the metric are now
+\begin{equation}
+\dif s^2 = -\rbr{1-\frac{\rSch}{\rfun{r}{u, v}}}\diff u\diff v
++\rfun{r}{u, v}^2\diff\Omega^2.
+\label{eq:co-sctlo}
+\end{equation}
+To bypass the coordinate singularity at $r = \rSch$, using
+\cref{eq:trsf-gtosc,eq:trsf-tlto} to get
+\begin{equation}
+1-\frac{\rSch}{r} = \frac{\rSch}{r}\rfun{\exp}{-\frac{r}{\rSch}}
+\rfun{\exp}{\frac{-u+v}{2\rSch}},
+\end{equation}
+so \cref{eq:co-sctlo} becomes
+\begin{equation}
+\dif s^2 = -\frac{\rSch}{r}\rfun{\exp}{-\frac{r}{\rSch}}
+\rfun{\exp}{\frac{-u+v}{2\rSch}}\diff u\diff v
++ r^2\diff\Omega^2.
+\end{equation}
+Absorbing the corresponding exponentials by introducing the
+\emph{Kruskal-Szekeres} light-cone coordinates,
+\begin{equation}
+U = -\rSch \rfun{\exp}{-\frac{u}{2\rSch}}
+\quad\text{and}\quad
+V = +\rSch \rfun{\exp}{+\frac{v}{2\rSch}},
+\end{equation}
+leads to the new components
+\begin{equation}
+\dif s^2 = -\frac{4\rSch}{\rfun{r}{U,V}}\rfun{\exp}{-\frac{\rfun{r}{U,V}}{\rSch}}
+\diff U\diff V + \rfun{r}{U,V}^2\diff\Omega^2.
+\end{equation}
+By further rotating the light-cone coordinates into time- and space-like ones,
+\begin{equation}
+U = T-R\quad\text{and}\quad V = T+R,
+\end{equation}
+one can derive the Kruskal-Szekeres coordinates, the metric in
+which takes the form
+\begin{equation}
+\dif s^2 = \frac{16\rSch}{\rfun{r}{T,R}}\rfun{\exp}{-\frac{\rfun{r}{T,R}}{\rSch}}
+\rbr{-\dif T^2 + \dif R^2} + \rfun{r}{T,R}^2\diff\Omega^2.
+\end{equation}
+
+Finally, in order to compactify the coordinates $T$ and $R$ into finite range
+while keeping the causal structure, one may introducing the \emph{conformal}
+coordinates of light-cone and space-time
+\begin{equation}
+\mu = \arctan\frac{U}{\rSch} = \eta - \chi \quad\text{and}\quad
+\nu = \arctan\frac{V}{\rSch} = \eta + \chi,
+\end{equation}
+leading to the components
+\begin{align}
+\dif s^2
+&= -\frac{4\rSch^3}{r}\ee^{-r/\rSch}\sec^2\mu\sec^2\nu \diff\mu\diff\nu
++ r^2\diff\Omega^2 \\
+&= \frac{16\rSch^3}{r}\ee^{-r/\rSch}
+\rfun{\sec^2}{\eta-\chi}\rfun{\sec^2}{\eta+\chi}
+\rbr{-\dif\eta^2+\dif\chi^2}
++ r^2\diff\Omega^2.
+\end{align}
+
+\subsubsection{Properties}
+
+\begin{namedthm}{Surface gravity}
+The surface gravity of Schwarzschild black hole is
+\begin{equation}
+\kappa_\text{Sch} = \frac{1}{2\rSch}.
+\label{eq:sur-gra-sch}
+\end{equation}
+\end{namedthm}
+\begin{proof}
+$\partial_t \equiv \rbr{\partial_t}_\text{Sch}$
+\begin{align*}
+\nabla_{\partial_t}\partial_t &= \rbr{\partial_v}^{\mu'}
+\rbr{\nabla_{\mu'}\rbr{\partial_v}^{\nu'}}\partial_{\nu'} \\
+&= \delta^{\nu'}_{v} \rbr{\partial_{\nu'} \delta^{\mu'}_{v}
++\Gamma^{\mu'}{}_{\nu'\rho'}\delta^{\rho'}_{v}}\partial_{\nu'} \\
+&= \Gamma^{\mu'}{}_{vv}\partial_{\mu'}
+= \frac{\rSch}{2r^2}\rbr{\partial_v + \rbr{1-\frac{\rSch}{r}}\partial_r}.
+\end{align*}
+\begin{equation}
+\kappa_\text{Sch} \fat{\partial_t}{\fHor} \equiv
+\fat{\nabla_{\partial_t}\partial_t}{\fHor} = \frac{1}{2\rSch} \fat{\partial_t}{\fHor}.
+\end{equation}
+\end{proof}
+
+\subsection{Other space-times of black hole}
+
+\subsubsection{Spherically symmetric space-times}
+
+
+\begin{nameddef}{Schwarzschild space-time with cosmological constant}
+\begin{equation}
+\rfun{f}{r} = 1-\frac{2\nG M}{r} - \frac{\nG \Lambda}{3}r^2.
+\end{equation}
+\end{nameddef}
+
+Volume
+
+Reissner--Nordström space-time
+%\cite{ANDP:ANDP19163550905}
+
+\subsubsection{Axially symmetric space-times}
+
+\begin{nameddef}{Kerr--Newman space-times with cosmological constant}
+\begin{equation}
+\begin{split}
+\dif s^2 = -\frac{\Delta_r}{\Xi^2\varrho^2}
+\rbr{\dif t^2-a\sin^2\theta \diff\theta}^2
++ \frac{\varrho^2}{\Delta_r}\diff r^2
++ \frac{\varrho^2}{\Delta_\theta}\diff \theta^2 \\
++ \frac{\Delta_\theta \sin^2\theta}{\Xi^2\varrho^2}
+\rbr{a\diff t^2 - \rbr{r^2+a^2}\diff\phi}^2,
+\end{split}
+\end{equation}
+where
+\begin{align*}
+\varrho^2 &= r^2+a^2\cos^2\theta, \\
+\Delta_r &= \rbr{r^2+a^2}\rbr{1-\frac{\nG\Lambda}{3}r^2}-2\nG Mr+\nG Q^2, \\
+\Delta_\theta &= 1 + \frac{\nG \Lambda}{3}a^2\cos^2\theta, \\
+\Xi &= 1 + \frac{\nG \Lambda}{3} a^2,
+\end{align*}
+and the potential one-form for the electromagnetic field is
+\begin{equation}
+\mathrm{A} = -\frac{Qr}{\varrho^2}\rbr{\dif r - a \sin^2 \theta \diff\phi}.
+\end{equation}
+\end{nameddef}

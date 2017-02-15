@@ -1,0 +1,180 @@
+%==============================================================================
+\chapter{Harmonic Oscillators}
+\label{chap:harosc}
+%==============================================================================
+
+%------------------------------------------------------------------------------
+\section{Single Harmonic Oscillator}
+\label{sec:single-harosc}
+%------------------------------------------------------------------------------
+
+A single harmonic oscillator is described by the Hamiltonian
+\begin{equation}
+H = \frac{1}{2}\rbr{\pi^2 + \Omega^2f^2},
+\label{eq:hamiltonian-simple-harosc}
+\end{equation}
+where $\rbr{\pi, f}$ are conjugate momentum and position, respectively. Here
+a unit system similar to the case in field theory is adapted. Canonical
+quantisation uses the annihilation and creation operators
+\begin{equation}
+a^- \coloneqq \frac{1}{\sqrt{2}}\rbr{\sqrt{\Omega}f + 
+\frac{\ii}{\sqrt{\Omega}}\pi}, \qquad
+a^+ \coloneqq \frac{1}{\sqrt{2}}\rbr{\sqrt{\Omega}f
+-\frac{\ii}{\sqrt{\Omega}}\pi} \equiv \rbr{a^-}^\dagger;
+\end{equation}
+inverse expressions read
+\begin{equation}
+f = \frac{a^++a^-}{\sqrt{2\Omega}},\qquad
+\pi = \ii\sqrt{\frac{\Omega}{2}}\rbr{a^+-a^-}.
+\end{equation}
+The ground state and the normalised $n$th excitation are defined by
+\begin{equation}
+a^-\Ket{0} \coloneqq 0,\qquad
+\Ket{n} \coloneqq \frac{1}{\sqrt{n!}}\rbr{a^+}^n\Ket{0},\qquad
+n \in \BbbZ_+,
+\end{equation}
+the wave functions of which are
+\begin{equation}
+\Braket{f | n} = \frac{1}{\sqrt{2^n n!}} 
+\ee^{-\Omega f^2/2} \rfun{H_n}{\sqrt{\Omega}f}, \qquad
+n \in \BbbZ,
+\end{equation}
+where $\rfun{H_n}{x}$ is the $n$th Hermite polynomial. The normalising measure
+\begin{equation}
+\rfun{\dd \mu}{f} \coloneqq \sqrt{\frac{\Omega}{\pp}}\,\dd f
+\end{equation}
+is used throughout, so that the completeness relation holds,
+\begin{align}
+\int \rfun{\dd \mu}{f}\,\Braket{\alpha | f}\Braket{f | \beta} \equiv
+\Braket{\alpha | \beta}.
+\end{align}
+
+In the present work, a general Gaussian state $\Ket{\omega}$ has also been 
+considered, the wave function of which reads
+\begin{equation}
+\Braket{f | \omega} = \rbr{\frac{\Re\omega}{\Omega}}^{1/4}
+\rfun{\exp}{-\frac{\omega}{2}f^2},\qquad \Re \omega > 0
+\label{eq:general-single-omega}
+\end{equation}
+Evaluating the expectation of $f^2$ yields
+\begin{equation}
+\abr{f^2}_\omega \coloneqq \Braket{\omega | f^2 | \omega}
+= \rbr{2\Re \omega}^{-1}.
+\label{eq:correlator-1}
+\end{equation}
+$\Ket{\omega}$ can also be expressed in terms of energy eigenstates,
+\begin{align}
+\Braket{n | \omega} &= \int \rfun{\dd \mu}{f}\, \Braket{n | f} 
+\Braket{f | \omega} \nonumber \\
+&= \rbr{\frac{\Omega \Re\omega}{\pp^2}}^{1/4} \frac{1}{\sqrt{2^n n!}}
+\int_{-\infty}^{+\infty} \dd f\,
+\cfun{\exp}{-\frac{1}{2}\rbr{\Omega+\omega}f^2}\rfun{H_n}{\sqrt{\Omega}f}
+\nonumber \\
+&= \begin{cases} \rbr{\Omega  \Re(\omega )}^{\frac{1}{4}}
+\dfrac{2^{\frac{1}{2}-m} \sqrt{(2 m)!} }{m!}
+\dfrac{(\Omega -\omega )^m}{(\omega +\Omega )^{m+\frac{1}{2}}}
+& n = 2m, \\
+0 & n = 2m+1,
+\end{cases}
+\label{eq:n|omega}
+\end{align}
+thanks to \cite{Babusci2012}.
+
+A thermal state of the oscillator at temperature $T$ can be described by the
+density operator
+\begin{equation}
+\rho \coloneqq \frac{1}{Z} \cfun{\exp}{-\frac{H}{T}} = \frac{1}{Z} 
+\sum_{n=0}^{+\infty} \cfun{\exp}{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}} 
+\Ket{n}\Bra{n},
+% \nonumber \\
+%&= Z^{-1} \sum_{n=0}^{+\infty} 
+%\frac{\ee^{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}}}{n!}
+%\rbr{a^+}^n\Ket{0}\Bra{0}\rbr{a^-}^n,
+\label{eq:single-thermal-density-mat}
+\end{equation}
+where the partition function is
+\begin{equation}
+Z \coloneqq \tr{\ee^{-H/T}} = \frac{1}{2} \csch\frac{\Omega}{2 T}.
+\end{equation}
+One also obtains
+\begin{align}
+\abr{f^2}_\rho &= \frac{1}{2\Omega}\frac{1}{Z}\sum_{n=0}^{+\infty}
+\cfun{\exp}{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}}
+\Braket{n | \rbr{a^++a^-}^2 | n} \nonumber \\
+%&= \frac{1}{2\Omega}\frac{1}{Z}\sum_{n=0}^{+\infty}
+%\ee^{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}}
+%\Braket{n | \rbr{\rbr{a^+}^2+a^+a^-+a^-a^++\rbr{a^-}^2} | n} \nonumber \\
+&= \frac{1}{2\Omega}\frac{1}{Z}\sum_{n=0}^{+\infty}
+\cfun{\exp}{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}}
+\Braket{n | \rbr{2a^+a^-+1} | n} %\nonumber \\
+%&= \frac{\coth\frac{\Omega}{2 T}}{2\Omega}
+= \frac{1}{4T} \frac{\coth\frac{\Omega}{2 T}}{\frac{\Omega}{2 T}}.
+\label{eq:sho-th-cor-1}
+\end{align}
+%\Cref{eq:single-thermal-density-mat} expressed in terms of position basis can
+%also be calculated
+%\begin{align}
+%\rho &= \frac{1}{Z}
+%\sum_{n=0}^{+\infty} \ee^{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}}
+%\int\rfun{\dd\mu}{f_1}\,\rfun{\dd\mu}{f_2}\,
+%\Ket{f_1}\Braket{f_1 | n}\Braket{n | f_2}\Bra{f_2}
+%\nonumber \\
+%&= \frac{1}{Z} \int\rfun{\dd\mu}{f_1}\,\rfun{\dd\mu}{f_2}\,\Ket{f_1}
+%\rbr{\sum_{n=0}^{+\infty}\ee^{-\frac{\Omega}{T}\rbr{n+\frac{1}{2}}}
+%\Braket{f_1 | n}\Braket{n | f_2}}
+%\Bra{f_2};
+%\label{eq:thermal-position-basis-1}
+%\end{align}
+%The summation in \cref{eq:thermal-position-basis-1} can be closed
+%\begin{equation}
+%\rfun{\dd\mu}{f_1}\,\rfun{\dd\mu}{f_2}\,
+%\sum_{n=0}^{+\infty}\Braket{f_1 | n}\Braket{n | f_2}
+%= \dd f_1\,\dd f_2 \rfun{\delta}{f_1 - f_2},
+%\end{equation}
+%due to orthonormality and completeness of the bases.
+
+%------------------------------------------------------------------------------
+\section{Multiple Harmonic Oscillators}
+%------------------------------------------------------------------------------
+
+Multiple harmonic oscillators are described by the Hamiltonian
+\begin{equation}
+H = \sum_i H_i,\qquad H_i = \frac{1}{2}\rbr{\pi_i^2 + \Omega^2f_i^2},
+\end{equation}
+where $\rbr{\pi_i, f_i}$ are conjugate momentum and position of the $i$th
+oscillator.
+
+When the general Gaussian state
+\begin{equation}
+\Braket{\cbr{f} | \sbr{\omega}} = \rbr{\det\frac{\omega}{\Omega}}^{1/4} 
+\rfun{\exp}{-\frac{1}{2}f_i \omega_{ij} f_j}
+\label{eq:general-ij-omega}
+\end{equation}
+is considered, where $\omega_{ij}$ is a real symmetric positive-definite
+matrix, the two-point correlator becomes
+\begin{equation}
+\Braket{\sbr{\omega} | f_i f_j | \sbr{\omega}} = \sbr{\rbr{2\omega}^{-1}}_{ij},
+\label{eq:multi-har-cor}
+\end{equation}
+which is a generalisation of \cref{eq:correlator-1}.
+
+A thermal state at temperature $T$ can be described by the density operator
+\begin{equation}
+\rho = \bigotimes_i \rho_i,\qquad \rho_i =
+\frac{1}{Z} \rfun{\exp}{-\frac{H_i}{T}}.
+\label{eq:multi-thermal-density-mat}
+\end{equation}
+Computing the two-point correlator of the state, one finds
+\begin{equation}
+\abr{f_if_j}_\rho = \frac{\coth\frac{\Omega_i}{2T}}{2\Omega_i}
+\delta_{ij}
+= \frac{1}{4T} \frac{\coth\frac{\Omega_i}{2T}}{\frac{\Omega_i}{2T}} 
+\delta_{ij}
+\label{eq:correlator-multiple-thermal}
+\end{equation}
+from \cref{eq:sho-th-cor-1}.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mythesis"
+%%% End: 

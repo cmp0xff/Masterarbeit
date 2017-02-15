@@ -1,0 +1,115 @@
+\section{Quantised fields}
+\label{sec:quantised}
+
+\subsection{Fields in Schwarzschild space-time}
+
+\subsubsection{Linear, massless scalar field}
+
+\cite{PhysRevD.21.2185}
+
+\begin{nameddef}{Complete exterior modes}
+\begin{align}
+\rfun{u_{\omega lm}^{\rightarrow}}{x} &= \rbr{4\pp\omega}^{-\frac{1}{2}}
+\ee^{-\ii\omega t} \rfun{R_l^{\rightarrow}}{\omega\middle| r}
+\rfun{Y_{lm}}{\theta, \phi}, \\
+\rfun{u_{\omega lm}^{\leftarrow}}{x} &= \rbr{4\pp\omega}^{-\frac{1}{2}}
+\ee^{-\ii\omega t} \rfun{R_l^{\leftarrow}}{\omega\middle| r}
+\rfun{Y_{lm}}{\theta, \phi}, 
+\end{align}
+where the in- and outgoing radial functions
+$\rfun{R_l^{\leftrightarrow}}{\omega\middle| r}$ has the asymptotic forms
+\begin{align}
+\rfun{R_l^{\rightarrow}}{\omega\middle| r} &\sim r^{-1} \cdot
+\begin{cases}
+\ee^{i\omega r_*}
++ \rfun{A_l^\rightarrow}{\omega}\ee^{-\ii\omega r_*}, & r\to \rSch^+ \\
+\rfun{B_l}{\omega}\ee^{+\ii\omega r_*}, & r\to +\infty
+\end{cases}
+\\
+\rfun{R_l^{\leftarrow}}{\omega\middle| r} &\sim r^{-1} \cdot
+\begin{cases}
+\rfun{B_l}{\omega}\ee^{\ii\omega r_*}, & r\to \rSch^+ \\
+\ee^{-i\omega r_*}
++ \rfun{A_l^\leftarrow}{\omega}\ee^{+\ii\omega r_*} & r\to +\infty
+\end{cases}
+\end{align}
+in which the relation of $r_*$ and $r$ is given by \cref{eq:trsf-gtosc}.
+\end{nameddef}
+
+\begin{nameddef}{The Boulware state}
+$\Ket{B}$ \cite{PhysRevD.11.1404} retarded propagator is given by
+\begin{equation}
+\begin{split}
+\rfun{E_\text{B}^+}{x, x'} = \ii\sum_{lm}\int_0^{+\infty}
+&\frac{\dif\omega}{4\pp\omega}\ee^{-\ii\omega\rbr{t-t'}}
+\rfun{Y_{lm}}{\theta,\phi}\rfun{{Y_{lm}}^*}{\theta ',\phi '} \\
+&\cdot\rbr{\rfun{R_l^{\rightarrow}}{\omega\middle| r}
+\rfun{{R_l^{\rightarrow}}^*}{\omega\middle| r'} + 
+\rfun{R_l^{\leftarrow}}{\omega\middle| r}
+\rfun{{R_l^{\leftarrow}}^*}{\omega\middle| r'}}
+\end{split}
+\end{equation}
+\label{nmd:boulware_state}
+\end{nameddef}
+
+\begin{nameddef}{The Unruh state}
+$\Ket{U}$ \cite{PhysRevD.14.870} retarded propagator is given by
+\begin{equation}
+\begin{split}
+\rfun{E_\text{U}^+}{x, x'} = \ii\sum_{lm}\int_{-\infty}^{+\infty}
+&\frac{\dif\omega}{4\pp\omega}\ee^{-\ii\omega\rbr{t-t'}}
+\rfun{Y_{lm}}{\theta,\phi}\rfun{{Y_{lm}}^*}{\theta ',\phi '} \\
+&\rbr{\frac{\rfun{R_l^{\rightarrow}}{\omega\middle| r}
+\rfun{{R_l^{\rightarrow}}^*}{\omega\middle| r'}}{1-\ee^{-2\pp\omega/\kappa}} +
+\rfun{\theta}{\omega}\rfun{R_l^{\leftarrow}}{\omega\middle| r}
+\rfun{{R_l^{\leftarrow}}^*}{\omega\middle| r'}}
+\end{split}
+\end{equation}
+\label{nmd:unruh_state}
+\end{nameddef}
+
+\begin{nameddef}{The Hartle-Hawking-Israel state}
+$\Ket{H}$ \cite{PhysRevD.13.2188, ISRAEL1976107} retarded propagator is given by
+\begin{equation}
+\begin{split}
+\rfun{E_\text{H}^+}{x, x'} =
+ \ii \sum_{lm} & \int_{-\infty}^{+\infty}\frac{\dif\omega}{4\pp\omega} \\
+\cdot\biggl( & \ee^{-\ii\omega\rbr{t-t'}}
+\rfun{Y_{lm}}{\theta,\phi}\rfun{{Y_{lm}}^*}{\theta ',\phi '}
+\frac{\rfun{R_l^{\rightarrow}}{\omega\middle| r}
+\rfun{{R_l^{\rightarrow}}^*}{\omega\middle| r'}}{1-\ee^{-2\pp\omega/\kappa}}
+\\
++ & \ee^{+\ii\omega\rbr{t-t'}}
+\rfun{{Y_{lm}}^*}{\theta,\phi}\rfun{Y_{lm}}{\theta ',\phi '}
+\frac{\rfun{{R_l^{\leftarrow}}^*}{\omega\middle| r}
+\rfun{R_l^{\leftarrow}}{\omega\middle| r'}}{\ee^{+2\pp\omega/\kappa}-1}
+\biggr) \\
+\end{split}
+\end{equation}
+\label{nmd:hhi_state}
+\end{nameddef}
+
+\begin{ppty}
+The symptotic values of $\abr{\rfun{\phi^2}{x}}_\text{ren}$ \cite{PhysRevD.21.2185}
+
+$-\frac{1}{2\pp^2\rbr{1-\rSch/r}}\int_0^{+\infty}\frac{\dif\omega\,\omega}{\ee^{2\pp\omega/\kappa}-1}$,
+$\frac{1}{48\pp^2\rSch^2}-\frac{1}{8\pp^2\rSch^2}\int_0^{+\infty}\frac{\dif\omega\,\sum \rbr{2l+1}\vbr{\rfun{B_l}{\omega}}^2}{\omega\rbr{\ee^{2\pp\omega/\kappa}-1}}$,
+$\frac{1}{48\pp^2\rSch^2}$;
+$0$,
+$\frac{1}{2\pp^2 r^2}\int_0^{+\infty}\frac{\dif\omega\,\sum \rbr{2l+1}\vbr{\rfun{B_l}{\omega}}^2}{\omega\rbr{\ee^{2\pp\omega/\kappa}-1}}$,
+$\frac{1}{2\pp^2}\int_0^{+\infty}\frac{\dif\omega\,\omega}{\ee^{2\pp\omega/\kappa}-1}$.
+\end{ppty}
+
+Stress-momentum tensors
+\cite{PhysRevD.15.2088,PhysRevD.21.2185}
+
+\subsection{Fields in space-time of collapsing body}
+
+\cite{HAWKING1974,Hawking1975}
+
+\cite{PhysRevD.12.1519}
+\begin{equation}
+_+\Braket{n_{\omega}, m_{\omega'} | \Omega}_- =
+\delta_{nm}\delta_{\omega\omega'}\ee^{-n\pp \omega/\kappa}{}
+_+\Braket{\Omega|\Omega}_-
+\end{equation}

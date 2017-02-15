@@ -1,0 +1,117 @@
+%==============================================================================
+\chapter{$\rbr{1+1}$-dimensional Dilaton Gravity}
+\label{sec:1+1ddlt}
+%==============================================================================
+
+Since quantum field theories in $\rbr{3+1}$-dimensional Einstein gravitation 
+are difficult to solve, one may turn to alternative solvable gravity models to 
+get some hints for the physics in reality. The $\rbr{1+1}$-dimensional dilaton 
+gravity, or the Callan--Giddings--Harvey--Strominger (CGHS) model, is such a 
+candidate, which is used in the thesis and has been extensively studied in the 
+literature, see for instance \cite{Callan1992,Demers1996,Ashtekar2011}. In this 
+chapter a very brief review of the model is provided, mainly based on 
+\cite{Demers1996}.
+
+The action for the model, with $N$ massless scalar fields minimally coupled, 
+reads
+\begin{equation}
+S \coloneqq \int \dd^2 x \sqrt{-\ol{g}}\cbr{\frac{\ee^{-2\ol{\phi}}}{\nG}
+\sbr{\ol{R}+4\rbr{\nabla \ol{\phi}}^2 + 4\lambda^2}
+-\frac{1}{2}\sum_{i=1}^N\rbr{\nabla f_i}^2},
+\label{eq:action-CGHS-dilaton}
+\end{equation}
+where $f_i$'s are the neutral scalar matter fields, $\ol{\phi}$ is the dilaton 
+field, $\nG$ the dimensionless Newton constant, and $\lambda > 0$ the 
+cosmological constant. The dilaton field is essential in two dimensions, because 
+there is only one independent component in the Riemann curvature tensor, hence a 
+pure $\rbr{1+1}$-dimensional Einstein theory shall be trivial. Transforming 
+with $\phi = \ee^{-2\ol{\phi}}$ and $g_{\alpha\beta} = \ee^{-2\ol{\phi}} 
+\ol{g}_{\alpha\beta}$ eliminates the kinetic term for the dilaton, yielding
+\begin{equation}
+S = \int \dd x\,\dd t\sqrt{-g}\cbr{\frac{1}{\nG}\sbr{R\phi + 4\lambda^2}
+-\frac{1}{2}\rbr{\nabla f}^2},
+\label{eq:action-CGHS-dilaton-eli}
+\end{equation}
+where only one matter field is considered for simplicity, and an 
+ADM-like\footnote{Arnowitt--Deser--Misner, see \cite{Arnowitt2008}.}
+parametrisation of the metric
+\begin{equation}
+\dd s^2 = \ee^{2\rho}\sbr{-\sigma^2\,\dd t^2 + \rbr{\dd x + \xi\,\dd t}^2}
+\label{eq:ADM-para}
+\end{equation}
+is assumed, in which $\rbr{\sigma, \xi}$ are the lapse and shift functions.
+The action in \cref{eq:action-CGHS-dilaton-eli} has a classical solution 
+describing a collapsing null-matter shell, which resembles the solution of 
+a spherically collapsing body in the $\rbr{3+1}$-dimensional Einstein case. 
+The corresponding conformal diagram is plotted in \cref{fig:dil-col-bod}.
+
+To apply the canonical quantisation scheme, the action in
+\cref{eq:action-CGHS-dilaton-eli} is to be recast in the Hamiltonian formalism.
+However, the Legendre transformation of the field momenta proves to be 
+singular. This means that the momenta, as functions of the positions and 
+velocities, cannot be inverted to express the corresponding velocities as 
+functions of momenta and positions, so that the standard algorithm to obtain 
+the Hamiltonian
+\begin{equation}
+H \coloneqq \sbr{\frpa{L}{\dot{X}_i}\dot{X}_i - L}_{\dot{X}
+= \rfun{\dot{X}}{P,X}}
+\end{equation}
+does not apply, where $\rbr{X, \dot{X}, P}$ are the positions, velocities and 
+momenta, respectively.
+
+The systems, of which the Legendre transformation is singular, are called 
+\emph{constrained systems}. Other examples include a relativistic point 
+particle in the covariant form, Yang--Mills theories and string theories. For 
+such systems, the usual quantisation scheme and the Schrödinger equation do 
+not apply directly. Instead, one has to identify the constraints in the system 
+and apply Dirac's quantisation rules \cite{dirac1964lectures,Gitman1990}. The 
+result is that the quantum wave functional describing the CGHS model is 
+\emph{constrained} by
+\begin{align}
+0 = \mscrH_\parallel\sfun{\Psi}{\rho,\phi,f} &\coloneqq
+\rbr{\frde{\rho}{x}\frdva{}{\rho} - \frde{}{x}\frdva{}{\rho} 
++\frde{\phi}{x}\frdva{}{\phi} + \frde{f}{x}\frdva{}{f}}\sfun{\Psi}{\rho,\phi,f},
+\label{eq:hpara}\\
+0 = \mscrH_\perp\sfun{\Psi}{\rho,\phi,f} &\coloneqq
+\rbr{\frac{\nG}{2}\frdva{^2}{\rho\,\dva\phi} - \frac{1}{2}\frdva{^2}{f^2} 
++\frac{1}{2\nG}V_G + V_M}\sfun{\Psi}{\rho,\phi,f},
+\label{eq:hperp}
+\end{align}
+where
+\begin{equation}
+V_G \coloneqq 4\rbr{\frde{^2\phi}{x^2} - \frde{\phi}{x}\frde{\rho}{x} - 
+2\lambda^2 \ee^{2\rho}},\qquad
+V_M \coloneqq\frac{1}{2}\rbr{\frde{f}{x}}^2.
+\end{equation}
+\Cref{eq:hpara,eq:hperp} are the \emph{Wheeler--DeWitt equations} for the CGHS 
+model, which play the role of the usual Schrödinger equation for the whole 
+system.
+
+In the next step, a semi-classical approximation (see also \cite[sec.\ 
+5.4]{Kiefer2012}) of the Born--Oppenheimer type is applied to $\Psi$ by 
+expanding the exponent as
+\begin{equation}
+\sfun{\Psi}{\rho,\phi,f} = \ee^{\ii\rbr{\nG^{-1}S_0 + S_1 + \nG S_2 + \ldots}}.
+\end{equation}
+Inserting this expression into \cref{eq:hpara,eq:hperp}, one finds that at 
+order $\nG^{0}$, variables can be separated by setting
+\begin{equation}
+\ee^{\ii S_1} \coloneqq \sfun{D^{-1}}{\rho,\phi}\sfun{\chi}{\rho,\phi,f}.
+\end{equation}
+Inserting the leading and next-to-leading order terms into 
+\cref{eq:hpara,eq:hperp} yields
+\begin{equation}
+\ii \rbr{\frpa{\rho}{t}\frdva{\chi}{\rho} + \frpa{\phi}{t}\frdva{\chi}{\phi}} = 
+\frac{1}{2}\cbr{-\frdva{^2}{f^2}+\rbr{\frpa{f}{x}}^2} \chi,
+\end{equation}
+integrating of which gives the functional Schrödinger equation for the matter 
+field \eqref{eq:functional-Sch-chi}.
+
+
+% Order $\nG^{-1}$: Hamilton--Jacobi for pure gravity
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mythesis"
+%%% End: 

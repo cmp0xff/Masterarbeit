@@ -1,0 +1,114 @@
+%==============================================================================
+\chapter{Correlator of Field Strength}
+\label{chap:corr_field}
+%==============================================================================
+
+Having revealed the discrepancy in the kinematic description of Hawking 
+radiation, namely as either a pure or a thermal and mixed state, the author 
+will show the difference in a physically relevant form. Recall that the 
+particle-number expectations of the pure and mixed states are the same, 
+i.e.\ the diagonal elements of the density operators in the particle-number 
+basis are the same. Hence one seeks operators revealing the off-diagonal 
+elements of the density operator.
+
+%------------------------------------------------------------------------------
+\section{Correlator and Fluctuation of Fourier Modes}
+\label{sec:corr_Fourier}
+%------------------------------------------------------------------------------
+
+A natural candidate to reveal the off-diagonal elements of the density 
+operators is the correlator. Bearing in mind the correlator of generalised 
+Gaussian wave functions (see \cref{eq:multi-har-cor}), the correlator of the 
+wave functional \cref{eq:squeezed-wave-functional} can be read off as
+\begin{align}
+\abr{\rfun{g^\dagger}{p_1}\rfun{g}{p_2}}_{\chi_b} &=
+\frac{1}{2}\rbr{\abr{\rfun{g_\Re}{p_1}\rfun{g_\Re}{p_2}}_{\chi_b}+\abr{
+\rfun{g_\Im}{p_1}\rfun{g_\Im}{p_2}}_{\chi_b}}
+= \frac{1}{2}\frac{\tanh\frac{\pp p_1}{2\lambda}}{p_1} \rfun{\delta}{p_1 - 
+p_2} \nonumber \\
+&\propto \frac{1}{8T_\text{HD}}\frac{\rfun{\tanh}{q/4}}{q/4} = 
+\frac{1}{8T_\text{HD}}\rbr{1 + \rfun{\Omicron}{q}}
+\label{eq:correlator-pure}
+\end{align}
+by substituting
+\begin{equation}
+\rfun{g}{p} = 2^{-1/2} \rbr{\rfun{g_\Re}{p} + \ii \rfun{g_\Im}{p}},
+\end{equation}
+where $2^{-1/2}\rfun{g_\Re}{p}$ and $2^{-1/2}\rfun{g_\Im}{p}$ are the 
+real and imaginary part of $\rfun{g}{p}$, respectively. In the last line of 
+\cref{eq:correlator-pure}, the delta function is ignored, and the dimensionless 
+parameter
+\begin{equation}
+	q \coloneqq p_1/T_\text{HD} \equiv 2\pp p_1/\lambda
+\end{equation}
+has been used. By the same argument, one also solves the correlator
+\begin{equation}
+\abr{\rfun{g^\dagger}{p_1}\rfun{g}{p_2}}_\text{vac} =
+\frac{1}{2\vbr{p_1}}\rfun{\delta}{p_1-p_2} \propto
+\frac{1}{2 T_\text{HD}} q^{-1}
+\label{eq:correlator-vacuum}
+\end{equation}
+for the vacuum wave functional $\cfun{\exp}{-\int_{-\infty}^{+\infty}\dd p \, 
+\vbr{p}\vbr{\rfun{g}{p}}^2}$.
+%\begin{equation}
+%\label{eq:vacuum-wave-functional-g}
+%\end{equation}
+For the thermal state, on the other hand, the correlator follows from
+\cref{eq:correlator-multiple-thermal}, so that
+\begin{align}
+\abr{\rfun{g^\dagger}{p_1}\rfun{g}{p_2}}_\text{th} &=
+\frac{\coth\frac{\pp p_1}{\lambda}}{2 p_1} \rfun{\delta}{p_1-p_2}
+\nonumber \\
+&\propto \frac{1}{4T_\text{HD}} \frac{\rfun{\coth}{q/2}}{q/2}
+= \frac{1}{4T_\text{HD}}\rbr{\rbr{\frac{q}{2}}^{-2} + \frac{1}{3} + 
+\rfun{\Omicron}{q}}.
+\label{eq:correlator-thermal}
+\end{align}
+
+One sees immediately that 
+\cref{eq:correlator-pure,eq:correlator-vacuum,eq:correlator-thermal} vanish 
+identically for $p_1 \neq p_2$, which is due to the absence of interaction in 
+the scalar field. The remaining diagonal terms have the meaning of 
+\emph{fluctuation} in field strength, because $\abr{g} \equiv 0$, so that
+\begin{equation}
+	\abr{\rbr{\Delta g}^2} = \abr{g^2} - \abr{g}^2 \equiv \abr{g^2}.
+\end{equation}
+Ignoring the $\rfun{\delta}{0}$ divergence, the fluctuations are plotted in
+\cref{fig:fluc-Fourier}.
+
+\begin{figure}
+\begin{center}
+\input{./graphics/graph_fluc_fourier}
+\end{center}
+\caption[Fluctuations of the Fourier modes]{Fluctuations of the Fourier modes 
+of the field, plotted in log--log scales. The critical energy scale is the
+Hawking temperature, below which the various fluctuations depart. The 
+discrepancy between the pure and thermal descriptions is most significant for 
+low-energy modes, while for high energies the fluctuations of them and 
+the vacuum state are practically the same. Moreover, compared with vacuum, the 
+low-energy fluctuation of thermal case is enhanced, so it diverges faster than 
+that of vacuum; for the pure description, however, the fluctuation is 
+suppressed, such that it converges to a constant of order unity and does not 
+diverge any more. \label{fig:fluc-Fourier}}
+\end{figure}
+
+%------------------------------------------------------------------------------
+\section{Discussion}
+\label{sec:corr-discussion}
+%------------------------------------------------------------------------------
+
+It has been noticed that the fluctuation discussed above has been extensively 
+used in cosmology, see e.g.\ \cite{Glenz2009}. The fluctuation in the 
+radiation field, however, looks different from that in cosmology and thus 
+remains yet to be explained.
+
+Moreover, the most natural candidate to reveal the off-diagonal elements is the 
+correlator in \emph{real space}, which is just the Fourier transform of the 
+correlator calculated above. Unfortunately, the transformation has yet to be 
+made for the thermal state due to an infra-red divergence.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mythesis"
+%%% End: 
+
